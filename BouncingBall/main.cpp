@@ -41,7 +41,7 @@ void displayWire(void){
     glMatrixMode(GL_MODELVIEW);
     //glLoadIdentity();
     
-    gluLookAt(0, 0, 30, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
+    gluLookAt(0, 0, 20, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -212,61 +212,44 @@ void displayWire(void){
     glPopMatrix();
     
     int r = 0 ;
-    for (int i =10; i>-2; i--) {
-        glPushMatrix();
-        if (r) {
-            glColor3f(r, 0, 0);
-            r=0;
-        }else{
-             glColor3f(0,r,0);
-            r=1;
+   
+    for (int j=0; j>-4; j--) {
+        for (int i =10; i>-2; i--) {
+            glPushMatrix();
+            if (r) {
+                glColor3f(r, 0, 0);
+                r=0;
+            }else{
+                glColor3f(0,r,0);
+                r=1;
+            }
+            glTranslated(-5.0, j, i);
+            glutSolidCube(1);
+            glPopMatrix();
         }
-        glTranslated(-5.0, -3, i);
-        glutSolidCube(1);
-        glPopMatrix();
+        r=(r==0)?1:0;
     }
-    r=1;
-    for (int i =10; i>-2; i--) {
-        glPushMatrix();
-        if (r) {
-            glColor3f(r, 0, 0);
-            r=0;
-        }else{
-            glColor3f(0,r,0);
-            r=1;
+    
+    for (int i =5; i>-5; i--) {
+        for (int j=0; j>-4; j--) {
+            glPushMatrix();
+            if (r) {
+                glColor3f(r, 0, 0);
+                r=0;
+            }else{
+                glColor3f(0,r,0);
+                r=1;
+            }
+            glTranslated(i , j, -2);
+            glutSolidCube(1);
+            glPopMatrix();
         }
-        glTranslated(-5.0, -2, i);
-        glutSolidCube(1);
-        glPopMatrix();
+        r=(r==0)?1:0;
     }
-    r=0;
-    for (int i =10; i>-2; i--) {
-        glPushMatrix();
-        if (r) {
-            glColor3f(r, 0, 0);
-            r=0;
-        }else{
-            glColor3f(0,r,0);
-            r=1;
-        }
-        glTranslated(-5.0, -1, i);
-        glutSolidCube(1);
-        glPopMatrix();
-    }
-    r=1;
-    for (int i =10; i>-2; i--) {
-        glPushMatrix();
-        if (r) {
-            glColor3f(r, 0, 0);
-            r=0;
-        }else{
-            glColor3f(0,r,0);
-            r=1;
-        }
-        glTranslated(-5.0, 0, i);
-        glutSolidCube(1);
-        glPopMatrix();
-    }
+    
+    
+    
+    
     
     
     glFlush();
