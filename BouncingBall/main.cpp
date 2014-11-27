@@ -97,6 +97,36 @@ void displayWire(void){
     glutSolidCube(1);
     glPopMatrix();
     
+    /////
+    
+    //Cube2
+    glPushMatrix();
+    glColor3f(0, 0, 0);
+    glTranslated(5.0, 0, 3.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(0.7, 0.7, 0.7);
+    glTranslated(5.0, -1.0, 3.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(0, 0, 0);
+    glTranslated(5.0, -2.0, 3.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2
+    glPushMatrix();
+    glColor3f(0.7, 0.7, 0.7);
+    glTranslated(5.0, -3, 3.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
     
     
     
