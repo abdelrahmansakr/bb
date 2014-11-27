@@ -33,13 +33,17 @@ void displayWire(void){
     //set the camera
     //glMatrixMode(GL_PROJECTION);
     //glLoadIdentity();
-    gluPerspective(60, 800 / 600, 0.001, 100);
+    glOrtho(-0.5, 0.5, -0.5, 0.5, -1, 1);
+    //gluPerspective(60, 800 / 600, 0.001, 100);
     glMatrixMode(GL_MODELVIEW);
     //glLoadIdentity();
-    gluLookAt(0.0, 0.0, 15.0, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
+    gluLookAt(7, 15, 15.0, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    
+    glPushMatrix();
+    glColor3f(0.8, 0.0, 0.7);
+    glutSolidCube(2);
+    glPopMatrix();
     
     //Cube2
     glPushMatrix();
