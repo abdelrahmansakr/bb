@@ -6,6 +6,9 @@
 #include <iostream>
 #include "glut.h"
 
+int rightXOffset = 5;
+double colors[2] = {(1,1,1) , (0.5,0.5,0.5)};
+
 
 void SetupLights()
 {
@@ -42,20 +45,25 @@ void displayWire(void){
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glPushMatrix();
-    glColor3f(0.8, 0.0, 0.7);
-    glutSolidCube(2);
-    glPopMatrix();
     
-    
-    //Cube1
-    glPushMatrix();
-    glScaled(1, 1, 2);
-    glColor3f(1.0, 0.0, 0.0);
-    glTranslated(5.0, -1.0, 1.0);
-    glutSolidCube(1);
-    glPopMatrix();
-    
+    for (int i = 0; i < 10 ; i++) {
+        for (int j=-5; j<5; j++) {
+            glPushMatrix();
+            glScaled(1, 1, 2);
+            if (i%2 == 0) {
+                glColor3f(0.2,0.2,0.2);
+            }
+            else{
+                glColor3f(0.8,0.8,0.8);
+            }
+            
+            glTranslated(5.0, j, i);
+            glutSolidCube(1);
+            glPopMatrix();
+        }
+
+    }
+
     //Cube1
     glPushMatrix();
     glScaled(1, 1, 2);
