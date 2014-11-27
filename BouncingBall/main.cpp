@@ -7,7 +7,7 @@
 #include "glut.h"
 
 int rightXOffset = 5;
-double colors[2] = {(1,1,1) , (0.5,0.5,0.5)};
+double colorsArray[7][3];
 
 
 void SetupLights()
@@ -50,12 +50,12 @@ void displayWire(void){
         for (int j=-5; j<5; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
-            if (i%2 == 0) {
-                glColor3f(0.2,0.2,0.2);
-            }
-            else{
-                glColor3f(0.8,0.8,0.8);
-            }
+//            if (i%2 == 0) {
+//                glColor3f(colorsArray[i%2][j%3], colorsArray[i%2][j%3], colorsArray[i%2][j%3]);
+//            }
+//            else{
+                glColor3f(colorsArray[rand()%7][0], colorsArray[rand()%7][1], colorsArray[rand()%7][2]);
+//            }
             
             glTranslated(5.0, j, i);
             glutSolidCube(1);
@@ -274,6 +274,56 @@ void displayWire(void){
 
 int main(int argc, char** argv)
 {
+    for (int i = 0; i < 7 ; i++) {
+        int j = rand()%7;
+        switch (i) {
+            case 0:
+                colorsArray[i][0] = 0.12;
+                colorsArray[i][1] = 0.2;
+                colorsArray[i][2] = 0.2;
+                break;
+                
+            case 1:
+                colorsArray[i][0] = 0.5;
+                colorsArray[i][1] = 0.0;
+                colorsArray[i][2] = 0.5;
+                break;
+                
+            case 2:
+                colorsArray[i][0] = 0.5;
+                colorsArray[i][1] = 0.5;
+                colorsArray[i][2] = 0.5;
+                break;
+                
+            case 3:
+                colorsArray[i][0] = 1.0;
+                colorsArray[i][1] = 0.25;
+                colorsArray[i][2] = 0.0;
+                break;
+                
+            case 4:
+                colorsArray[i][0] = 0.0;
+                colorsArray[i][1] = 1.0;
+                colorsArray[i][2] = 0.0;
+                break;
+                
+            case 5:
+                colorsArray[i][0] = 0.0;
+                colorsArray[i][1] = 0.5;
+                colorsArray[i][2] = 0.5;
+                break;
+                
+            case 6:
+                colorsArray[i][0] = 1.0;
+                colorsArray[i][1] = 0.0;
+                colorsArray[i][2] = 0.0;
+                break;
+                
+            default:
+                break;
+        }
+
+    }
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB|GLUT_DEPTH);
     glutInitWindowSize(800,600);
