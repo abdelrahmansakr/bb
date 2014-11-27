@@ -230,6 +230,25 @@ void displayWire(void){
         r=(r==0)?1:0;
     }
     
+    for (int i =5; i>-5; i--) {
+        for (int j=0; j>-4; j--) {
+            glPushMatrix();
+            if (r) {
+                glColor3f(r, 0, 0);
+                r=0;
+            }else{
+                glColor3f(0,r,0);
+                r=1;
+            }
+            glTranslated(i , j, -2);
+            glutSolidCube(1);
+            glPopMatrix();
+        }
+        r=(r==0)?1:0;
+    }
+    
+    
+    
     
     
     
