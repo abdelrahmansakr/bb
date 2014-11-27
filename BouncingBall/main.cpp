@@ -6,6 +6,9 @@
 #include <iostream>
 #include "glut.h"
 
+int rightXOffset = 5;
+double colors[2] = {(1,1,1) , (0.5,0.5,0.5)};
+
 
 void SetupLights()
 {
@@ -38,138 +41,158 @@ void displayWire(void){
     glMatrixMode(GL_MODELVIEW);
     //glLoadIdentity();
 
-    gluLookAt(0, 0, 20, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
+    gluLookAt(0, 0, 30, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glPushMatrix();
-    glColor3f(0.8, 0.0, 0.7);
-    glutSolidCube(2);
-    glPopMatrix();
+    
+    for (int i = 0; i < 10 ; i++) {
+        for (int j=-5; j<5; j++) {
+            glPushMatrix();
+            glScaled(1, 1, 2);
+            if (i%2 == 0) {
+                glColor3f(0.2,0.2,0.2);
+            }
+            else{
+                glColor3f(0.8,0.8,0.8);
+            }
+            
+            glTranslated(5.0, j, i);
+            glutSolidCube(1);
+            glPopMatrix();
+        }
+
+    }
     
     
-    //Cube1
-    glPushMatrix();
-    glScaled(1, 1, 2);
-    glColor3f(1.0, 0.0, 0.0);
-    glTranslated(5.0, -1.0, 1.0);
-    glutSolidCube(1);
-    glPopMatrix();
-    
-    //Cube1
-    glPushMatrix();
-    glScaled(1, 1, 2);
-    glColor3f(0.0, 0.0, 1.0);
-    glTranslated(5.0, -2.0, 1.0);
-    glutSolidCube(1);
-    glPopMatrix();
-  
-  //Cube2
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(1.0, 0.0, 0.0);
-  glTranslated(5.0, -3, 1.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube2//////////////
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.3, 1, 0.7);
-  glTranslated(5.0, 0, 2.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube1
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.7, 0, 0.3);
-  glTranslated(5.0, -1.0, 2.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube1
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.3, 1, 0.7);
-  glTranslated(5.0, -2.0, 2.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube2
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.7, 0, 0.3);
-  glTranslated(5.0, -3, 2.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  /////
-  
-  //Cube2
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0, 0, 0);
-  glTranslated(5.0, 0, 3.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube1
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.7, 0.7, 0.7);
-  glTranslated(5.0, -1.0, 3.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube1
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0, 0, 0);
-  glTranslated(5.0, -2.0, 3.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube2
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.7, 0.7, 0.7);
-  glTranslated(5.0, -3, 3.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube2//////////////
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.6, 0.1, 0.3);
-  glTranslated(5.0, 0, 4.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube1
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.5, 0.5, 0.5);
-  glTranslated(5.0, -1.0, 4.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube1
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.6, 0.1, 0.3);
-  glTranslated(5.0, -2.0, 4.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
-  //Cube2
-  glPushMatrix();
-  glScaled(1, 1, 2);
-  glColor3f(0.5, 0.5, 0.5);
-  glTranslated(5.0, -3, 4.0);
-  glutSolidCube(1);
-  glPopMatrix();
-  
+//    glPushMatrix();
+//    glColor3f(0.8, 0.0, 0.7);
+//    glutSolidCube(2);
+//    glPopMatrix();
+//    
+//    
+//    //Cube1
+//    glPushMatrix();
+//    glScaled(1, 1, 2);
+//    glColor3f(1.0, 0.0, 0.0);
+//    glTranslated(5.0, -1.0, 1.0);
+//    glutSolidCube(1);
+//    glPopMatrix();
+//    
+//    //Cube1
+//    glPushMatrix();
+//    glScaled(1, 1, 2);
+//    glColor3f(0.0, 0.0, 1.0);
+//    glTranslated(5.0, -2.0, 1.0);
+//    glutSolidCube(1);
+//    glPopMatrix();
+//  
+//  //Cube2
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(1.0, 0.0, 0.0);
+//  glTranslated(5.0, -3, 1.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube2//////////////
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.3, 1, 0.7);
+//  glTranslated(5.0, 0, 2.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube1
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.7, 0, 0.3);
+//  glTranslated(5.0, -1.0, 2.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube1
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.3, 1, 0.7);
+//  glTranslated(5.0, -2.0, 2.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube2
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.7, 0, 0.3);
+//  glTranslated(5.0, -3, 2.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  /////
+//  
+//  //Cube2
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0, 0, 0);
+//  glTranslated(5.0, 0, 3.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube1
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.7, 0.7, 0.7);
+//  glTranslated(5.0, -1.0, 3.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube1
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0, 0, 0);
+//  glTranslated(5.0, -2.0, 3.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube2
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.7, 0.7, 0.7);
+//  glTranslated(5.0, -3, 3.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube2//////////////
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.6, 0.1, 0.3);
+//  glTranslated(5.0, 0, 4.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube1
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.5, 0.5, 0.5);
+//  glTranslated(5.0, -1.0, 4.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube1
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.6, 0.1, 0.3);
+//  glTranslated(5.0, -2.0, 4.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
+//  //Cube2
+//  glPushMatrix();
+//  glScaled(1, 1, 2);
+//  glColor3f(0.5, 0.5, 0.5);
+//  glTranslated(5.0, -3, 4.0);
+//  glutSolidCube(1);
+//  glPopMatrix();
+//  
   
   
   
