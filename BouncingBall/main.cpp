@@ -33,51 +33,129 @@ void displayWire(void){
     //set the camera
     //glMatrixMode(GL_PROJECTION);
     //glLoadIdentity();
-    gluPerspective(0, 800 / 600, 0.001, 100);
-    //glMatrixMode(GL_MODELVIEW);
+    gluPerspective(60, 800 / 600, 0.001, 100);
+    glMatrixMode(GL_MODELVIEW);
     //glLoadIdentity();
-    gluLookAt(0.1, 0.09, 0.1, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
+    gluLookAt(0.0, 0.0, 15.0, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    //Cube1
-    glPushMatrix();
-    glColor3f(1.0, 0.0, 0.0);
-    glScaled(0.05, 0.3, 0.3);
-    glTranslated(-20.0, -1.0, 0.0);
-    glutSolidCube(0.5);
-    glPopMatrix();
+    
     
     //Cube2
     glPushMatrix();
     glColor3f(0.0, 0.0, 1.0);
-    glScaled(0.05, 0.3, 0.3);
-    glTranslated(-20.0, -0.5, 0.0);
-    glutSolidCube(0.5);
-    glPopMatrix();
-    
-    //Cube3
-    glPushMatrix();
-    glColor3f(0.0, 1.0, 0.0);
-    glScaled(0.05, 0.3, 0.3);
-    glTranslated(-20.0, 0.0, 0.0);
-    glutSolidCube(0.5);
-    glPopMatrix();
-    
-    //Cube4
-    glPushMatrix();
-    glColor3f(0.0, 1.0, 0.0);
-    glScaled(0.05, 0.3, 0.3);
-    glTranslated(-20.0, -1.5, 0.0);
-    glutSolidCube(0.5);
+    glTranslated(5.0, 0, 1.0);
+    glutSolidCube(1);
     glPopMatrix();
     
     //Cube1
     glPushMatrix();
     glColor3f(1.0, 0.0, 0.0);
-    glScaled(0.05, 0.3, 0.3);
-    glTranslated(-20.0, 2.0, 0.0);
-    glutSolidCube(0.5);
+    glTranslated(5.0, -1.0, 1.0);
+    glutSolidCube(1);
     glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 1.0);
+    glTranslated(5.0, -2.0, 1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2
+    glPushMatrix();
+    glColor3f(1.0, 0.0, 0.0);
+    glTranslated(5.0, -3, 1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2//////////////
+    glPushMatrix();
+    glColor3f(0.3, 1, 0.7);
+    glTranslated(5.0, 0, 2.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(0.7, 0, 0.3);
+    glTranslated(5.0, -1.0, 2.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(0.3, 1, 0.7);
+    glTranslated(5.0, -2.0, 2.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2
+    glPushMatrix();
+    glColor3f(0.7, 0, 0.3);
+    glTranslated(5.0, -3, 2.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2/////////////
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 1.0);
+    glTranslated(5.0, 0, 1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(1.0, 0.0, 0.0);
+    glTranslated(5.0, -1.0, 1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 1.0);
+    glTranslated(5.0, -2.0, 1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2
+    glPushMatrix();
+    glColor3f(1.0, 0.0, 0.0);
+    glTranslated(5.0, -3, 1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    
+    ///////////////////////////////////////////////
+    
+    //Cube2
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 1.0);
+    glTranslated(-5.0, 0, -1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(1.0, 0.0, 0.0);
+    glTranslated(-5.0, -1.0, -1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glColor3f(0.0, 0.0, 1.0);
+    glTranslated(-5.0, -2.0, -1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2
+    glPushMatrix();
+    glColor3f(1.0, 0.0, 0.0);
+    glTranslated(-5.0, -3, -1.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
     
     glFlush();
 }
