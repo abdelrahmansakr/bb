@@ -43,6 +43,7 @@ void displayWire(void){
     
     //Cube2
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.0, 0.0, 1.0);
     glTranslated(5.0, 0, 1.0);
     glutSolidCube(1);
@@ -50,6 +51,7 @@ void displayWire(void){
     
     //Cube1
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(1.0, 0.0, 0.0);
     glTranslated(5.0, -1.0, 1.0);
     glutSolidCube(1);
@@ -57,6 +59,7 @@ void displayWire(void){
     
     //Cube1
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.0, 0.0, 1.0);
     glTranslated(5.0, -2.0, 1.0);
     glutSolidCube(1);
@@ -64,6 +67,7 @@ void displayWire(void){
     
     //Cube2
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(1.0, 0.0, 0.0);
     glTranslated(5.0, -3, 1.0);
     glutSolidCube(1);
@@ -71,6 +75,7 @@ void displayWire(void){
     
     //Cube2//////////////
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.3, 1, 0.7);
     glTranslated(5.0, 0, 2.0);
     glutSolidCube(1);
@@ -78,6 +83,7 @@ void displayWire(void){
     
     //Cube1
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.7, 0, 0.3);
     glTranslated(5.0, -1.0, 2.0);
     glutSolidCube(1);
@@ -85,6 +91,7 @@ void displayWire(void){
     
     //Cube1
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.3, 1, 0.7);
     glTranslated(5.0, -2.0, 2.0);
     glutSolidCube(1);
@@ -92,6 +99,7 @@ void displayWire(void){
     
     //Cube2
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.7, 0, 0.3);
     glTranslated(5.0, -3, 2.0);
     glutSolidCube(1);
@@ -101,6 +109,7 @@ void displayWire(void){
     
     //Cube2
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0, 0, 0);
     glTranslated(5.0, 0, 3.0);
     glutSolidCube(1);
@@ -108,6 +117,7 @@ void displayWire(void){
     
     //Cube1
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.7, 0.7, 0.7);
     glTranslated(5.0, -1.0, 3.0);
     glutSolidCube(1);
@@ -115,6 +125,7 @@ void displayWire(void){
     
     //Cube1
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0, 0, 0);
     glTranslated(5.0, -2.0, 3.0);
     glutSolidCube(1);
@@ -122,8 +133,41 @@ void displayWire(void){
     
     //Cube2
     glPushMatrix();
+    glScaled(1, 1, 2);
     glColor3f(0.7, 0.7, 0.7);
     glTranslated(5.0, -3, 3.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2//////////////
+    glPushMatrix();
+    glScaled(1, 1, 2);
+    glColor3f(0.6, 0.1, 0.3);
+    glTranslated(5.0, 0, 4.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glScaled(1, 1, 2);
+    glColor3f(0.5, 0.5, 0.5);
+    glTranslated(5.0, -1.0, 4.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube1
+    glPushMatrix();
+    glScaled(1, 1, 2);
+    glColor3f(0.6, 0.1, 0.3);
+    glTranslated(5.0, -2.0, 4.0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    //Cube2
+    glPushMatrix();
+    glScaled(1, 1, 2);
+    glColor3f(0.5, 0.5, 0.5);
+    glTranslated(5.0, -3, 4.0);
     glutSolidCube(1);
     glPopMatrix();
     
