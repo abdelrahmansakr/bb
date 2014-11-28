@@ -452,8 +452,8 @@ void animateIdle()
             
         }
         else {
-            totalScore+=score;
             if (!printed) {
+            totalScore+=score;
             std::cout << "The score of this round is: ";
             std::cout << score;
             std::cout << "\n";
