@@ -56,11 +56,13 @@ bool replay = false;
 
 int totalScore = 0;
 
+
+bool enhancedCamera = true;
+int r = 0;
+
 double upX = 0;
 double upY = 1;
 double upZ = 0;
-bool enhancedCamera = true;
-int r = 0;
 
 void SetupLights()
 {
