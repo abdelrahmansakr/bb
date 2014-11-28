@@ -9,11 +9,19 @@
 int rightXOffset = 5;
 double colorsArray[7][4];
 double zLookAt = 110;
+double savedZLookAt = 110;
 double gameColors[4000][4];
 int startIndex = 0;
 double sphereTranslateX = 0;
 double sphereTranslateY = 0;
 double sphereTranslateZ = 97;
+
+double savedSphereTranslateX = 0;
+double savedSphereTranslateY = 0;
+double savedSphereTranslateZ = 97;
+double savedGameColors[4000][4];
+
+
 int decrementX = 1;
 int decrementY = 1;
 int decrementZ = 1;
@@ -379,6 +387,15 @@ void animateIdle()
 }
 void keyPressed (unsigned char key, int x, int y) {
     if (key==' '){  // If the 'spacebar' key has been pressed
+        for (int i = 0; i < 4000; i++) {
+            savedGameColors[i][0] = gameColors[i][0];
+            savedGameColors[i][1] = gameColors[i][1];
+            savedGameColors[i][2] = gameColors[i][2];
+            savedGameColors[i][3] = gameColors[i][3];
+        }
+        savedSphereTranslateX = sphereTranslateX;
+        savedSphereTranslateY = sphereTranslateY;
+        savedSphereTranslateZ = sphereTranslateZ;
         start = !start;
     }else{
         if (key == 'n') {
@@ -408,6 +425,21 @@ void keyPressed (unsigned char key, int x, int y) {
              arrowRotationAngleZ = 0;
              arrowRotationAngleX = -90;
         }
+    }
+    else if (key == 'r') {
+        for (int i = 0; i < 4000; i++) {
+            gameColors[i][0] = savedGameColors[i][0];
+            gameColors[i][1] = savedGameColors[i][1];
+            gameColors[i][2] = savedGameColors[i][2];
+            gameColors[i][3] = savedGameColors[i][3];
+        }
+        
+        
+        sphereTranslateX = savedSphereTranslateX;
+        sphereTranslateY = savedSphereTranslateY;
+        sphereTranslateZ = savedSphereTranslateZ;
+        zLookAt = savedZLookAt;
+
     }
     
 }
