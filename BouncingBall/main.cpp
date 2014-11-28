@@ -438,14 +438,15 @@ void keyPressed (unsigned char key, int x, int y) {
                 gameColors[i][2] = savedGameColors[i][2];
                 gameColors[i][3] = savedGameColors[i][3];
             }
+            sphereTranslateX = savedSphereTranslateX;
+            sphereTranslateY = savedSphereTranslateY;
+            sphereTranslateZ = savedSphereTranslateZ;
+            zLookAt = savedZLookAt;
     }
     
         
         
-        sphereTranslateX = savedSphereTranslateX;
-        sphereTranslateY = savedSphereTranslateY;
-        sphereTranslateZ = savedSphereTranslateZ;
-        zLookAt = savedZLookAt;
+
 
     }
     
