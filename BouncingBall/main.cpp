@@ -427,6 +427,7 @@ void keyPressed (unsigned char key, int x, int y) {
         start = !start;
     }else{
         if (key == 'n') {
+            replay =false;
             for (int i = 0; i < 4000; i++) {
                 gameColors[i][0] = savedGameColors[i][0];
                 gameColors[i][1] = savedGameColors[i][1];
@@ -466,17 +467,17 @@ void keyPressed (unsigned char key, int x, int y) {
                 gameColors[i][2] = savedGameColors[i][2];
                 gameColors[i][3] = savedGameColors[i][3];
             }
+            
+            sphereTranslateX = savedSphereTranslateX;
+            sphereTranslateY = savedSphereTranslateY;
+            sphereTranslateZ = savedSphereTranslateZ;
+            zLookAt = savedZLookAt;
+            
+            replay = true;
+
         }
         
-        
-        
-        sphereTranslateX = savedSphereTranslateX;
-        sphereTranslateY = savedSphereTranslateY;
-        sphereTranslateZ = savedSphereTranslateZ;
-        zLookAt = savedZLookAt;
-        
-        replay = true;
-        
+  
     }
     
 }
