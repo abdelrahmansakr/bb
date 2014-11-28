@@ -235,7 +235,7 @@ void displayWire(void){
         
     }
 
-    for (int i = -20; i < 20 ; i++) { //FRONT WALL
+    for (int i = -10; i < 10 ; i++) { //FRONT WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
@@ -380,10 +380,39 @@ void animateIdle()
 void keyPressed (unsigned char key, int x, int y) {
     if (key==' '){  // If the 'spacebar' key has been pressed
         start = !start;
+    }else{
+        if (key == 'n') {
+             rightXOffset = 5;
+             zLookAt = 110;
+             startIndex = 0;
+             sphereTranslateX = 0;
+             sphereTranslateY = 0;
+             sphereTranslateZ = 97;
+             decrementX = 1;
+             decrementY = 1;
+             decrementZ = 1;
+             sphereColor=1;
+             score=0;
+             keyPress =0;
+             leftPress=0;
+             rightPress=0;
+             upPress=0;
+             downPress=0;
+             start=false;
+             color=0;
+             indexToBeRemoved = 0;
+            
+             deltaSphereX=0;
+             deltaSphereY=0;
+            
+             arrowRotationAngleZ = 0;
+             arrowRotationAngleX = -90;
+        }
     }
     
 }
 void keySpecial (int key, int x, int y) {
+    if (!start) {
     if(key==GLUT_KEY_LEFT){
         leftPress=10;
         if (arrowRotationAngleX < -90) {
@@ -411,6 +440,7 @@ void keySpecial (int key, int x, int y) {
                     downPress=10;
                     arrowRotationAngleX -= 20;
                 }
+    }
 }
 
 int main(int argc, char** argv)
