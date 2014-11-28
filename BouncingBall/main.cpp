@@ -22,6 +22,12 @@ double rightWall[40][10];
 double leftWall[40][10];
 double topWall[40][10];
 double bottomWall[40][10];
+
+int rightWallIndex[40][10];
+int leftWallIndex[40][10];
+int topWallIndex[40][10];
+int bottomWallIndex[40][10];
+
 double score=0;
 int keyPress =0;
 int leftPress=0;
@@ -30,6 +36,7 @@ int upPress=0;
 int downPress=0;
 bool start=false;
 int color=0;
+int indexToBeRemoved = 0;
 
 void SetupLights()
 {
@@ -132,7 +139,7 @@ void displayWire(void){
     
     
     char * scoreString[50];
-    sprintf((char *)scoreString,"SCORE = %d",score);
+    sprintf((char *)scoreString,"SCORE = %f",score);
    // print(-10,10,110,(char *)scoreString,0.2,0.6,0.97,0);
     print3d(-10, 10, (char *)scoreString);
     
@@ -151,6 +158,7 @@ void displayWire(void){
     for (int i = 0; i < 40 ; i++) { //RIGHT WALL
         for (int j=-10; j<10; j++) {
             rightWall[i][j]=gameColors[startIndex][3];
+            rightWallIndex[i][j] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -165,6 +173,7 @@ void displayWire(void){
     for (int i = 0; i < 40 ; i++) { //LEFT WALL
         for (int j=-10; j<10; j++) {
             leftWall[i][j]=gameColors[startIndex][3];
+            leftWallIndex[i][j] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -179,6 +188,7 @@ void displayWire(void){
     for (int i = 0; i < 40 ; i++) { //TOP WALL
         for (int j=-10; j<10; j++) {
             topWall[i][j]=gameColors[startIndex][3];
+            topWallIndex[i][j] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -193,6 +203,7 @@ void displayWire(void){
     for (int i = 0; i < 40 ; i++) { //BOTTOM WALL
         for (int j=-10; j<10; j++) {
             bottomWall[i][j]=gameColors[startIndex][3];
+            bottomWallIndex[i][j] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -233,11 +244,40 @@ void animateIdle()
         if (zLookAt > 20) {
             if(sphereTranslateX >= 4){
                 score+=rightWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][0] = 1.0;
+                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][1] = 1.0;
+                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][2] = 1.0;
+                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][3] = 0.0;
                 
-                gameColors[0+(int)sphereTranslateY+(int)sphereTranslateZ][0] = 1;
-                gameColors[0+(int)sphereTranslateY+(int)sphereTranslateZ][1] = 1;
-                gameColors[0+(int)sphereTranslateY+(int)sphereTranslateZ][2] = 1;
-                gameColors[0+(int)sphereTranslateY+(int)sphereTranslateZ][3] = 0;
+                        std::cout << "\n";
+                        std::cout << (int)sphereTranslateY;
+                        std::cout << "\n";
+                        std::cout << (int)sphereTranslateZ;
+                        std::cout << "\n";
+                        std::cout << rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ];
+                        std::cout << "\n";
+                        std::cout << " ============= ";
+
+                
+//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][0] = 1;
+//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][1] = 1;
+//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][2] = 1;
+//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][3] = 0;
+//
+//                gameColors[700][0] = 1;
+//                gameColors[700][1] = 1;
+//                gameColors[700][2] = 1;
+//                gameColors[700][3] = 0;
+//                
+//                gameColors[720][0] = 1;
+//                gameColors[720][1] = 1;
+//                gameColors[720][2] = 1;
+//                gameColors[720][3] = 0;
+//                
+//                gameColors[320][0] = 1;
+//                gameColors[320][1] = 1;
+//                gameColors[320][2] = 1;
+//                gameColors[320][3] = 0;
                 
                 sphereColor=0;
                 color=10;
@@ -245,21 +285,21 @@ void animateIdle()
                 if(sphereTranslateX <= -4){
                     score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                     
-                    gameColors[800+(int)sphereTranslateY+(int)sphereTranslateZ][0] = 1;
-                    gameColors[800+(int)sphereTranslateY+(int)sphereTranslateZ][1] = 1;
-                    gameColors[800+(int)sphereTranslateY+(int)sphereTranslateZ][2] = 1;
-                    gameColors[800+(int)sphereTranslateY+(int)sphereTranslateZ][3] = 0;
+                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][0] = 1.0;
+                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][1] = 1.0;
+                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][2] = 1.0;
+                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][3] = 0.0;
                     
                     sphereColor=0;
                     color=10;
                 }else
                     if(sphereTranslateY >= 4){
-                        score+=topWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                        score+=topWall[(int)sphereTranslateZ][(int)sphereTranslateY];
                         
-                        gameColors[1600+(int)sphereTranslateY+(int)sphereTranslateZ][0] = 1;
-                        gameColors[1600+(int)sphereTranslateY+(int)sphereTranslateZ][1] = 1;
-                        gameColors[1600+(int)sphereTranslateY+(int)sphereTranslateZ][2] = 1;
-                        gameColors[1600+(int)sphereTranslateY+(int)sphereTranslateZ][3] = 0;
+                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][0] = 1.0;
+                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][1] = 1.0;
+                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][2] = 1.0;
+                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][3] = 0.0;
                         
                         sphereColor=0;
                         color=10;
@@ -267,10 +307,10 @@ void animateIdle()
                         if(sphereTranslateX <= -4){
                             score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                             
-                            gameColors[2400+(int)sphereTranslateY+(int)sphereTranslateZ][0] = 1;
-                            gameColors[2400+(int)sphereTranslateY+(int)sphereTranslateZ][1] = 1;
-                            gameColors[2400+(int)sphereTranslateY+(int)sphereTranslateZ][2] = 1;
-                            gameColors[2400+(int)sphereTranslateY+(int)sphereTranslateZ][3] = 0;
+                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][0] = 1.0;
+                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][1] = 1.0;
+                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][2] = 1.0;
+                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][3] = 0.0;
                             
                             sphereColor=0;
                             color=10;
@@ -309,8 +349,8 @@ void animateIdle()
             sphereTranslateZ -=0.05;
         }
         startIndex = 0;
-        std::cout << score;
-        std::cout << "\n";
+//        std::cout << score;
+//        std::cout << "\n";
     }
     sphereColor=1;
     double u;
