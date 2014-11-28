@@ -246,10 +246,10 @@ void animateIdle()
         if (zLookAt > 20) {
             if(sphereTranslateX >= 4){
                 score+=rightWall[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY];
-                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][0] = 1.0;
-                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][1] = 1.0;
-                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][2] = 1.0;
-                gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][3] = 0.0;
+                gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][0] = 1.0;
+                gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][1] = 1.0;
+                gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][2] = 1.0;
+                gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][3] = 0.0;
                 
 //                        std::cout << "\n";
 //                        std::cout << (int)sphereTranslateY;
