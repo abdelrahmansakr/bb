@@ -450,6 +450,33 @@ void animateIdle()
             }
             
         }
+        else {
+            std::cout << "The score of this round is: ";
+            std::cout << score;
+            std::cout << "\n";
+            std::cout << "The total score of all rounds is: ";
+            std::cout << totalScore;
+            std::cout << "\n";
+            std::cout << "The camera mode is: ";
+            if (enhancedCamera) {
+                std::cout << "Enhanced mode.";
+            }
+            else {
+                std::cout << "Normal mode.";
+            }
+            std::cout << "\n";
+            std::cout << "Up steps: ";
+            std::cout << up;
+            std::cout << "\n";
+            std::cout << "Down steps: ";
+            std::cout << down;
+            std::cout << "\n";
+            std::cout << "Left steps: ";
+            std::cout << left;
+            std::cout << "\n";
+            std::cout << "Right steps: ";
+            std::cout << right;
+        }
     }
     
     sphereColor=1;
