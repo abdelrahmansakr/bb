@@ -386,12 +386,22 @@ void keyPressed (unsigned char key, int x, int y) {
 void keySpecial (int key, int x, int y) {
     if(key==GLUT_KEY_LEFT){
         leftPress=10;
+        if (arrowRotationAngleX < -90) {
+            arrowRotationAngleZ -= 20;
+        }
+        else {
         arrowRotationAngleZ += 20;
+        }
     }
     else
         if (key==GLUT_KEY_RIGHT) {
             rightPress=10;
-            arrowRotationAngleZ -= 20;
+            if (arrowRotationAngleX < -90) {
+                arrowRotationAngleZ += 20;
+            }
+            else {
+                arrowRotationAngleZ -= 20;
+            }
         }else
             if (key==GLUT_KEY_UP) {
                 upPress=10;
