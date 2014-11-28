@@ -18,15 +18,15 @@ int decrementX = 1;
 int decrementY = 1;
 int decrementZ = 1;
 int sphereColor=1;
-double rightWall[40][10];
-double leftWall[40][10];
-double topWall[40][10];
-double bottomWall[40][10];
+double rightWall[40][20];
+double leftWall[40][20];
+double topWall[40][20];
+double bottomWall[40][20];
 
-int rightWallIndex[40][10];
-int leftWallIndex[40][10];
-int topWallIndex[40][10];
-int bottomWallIndex[40][10];
+int rightWallIndex[40][20];
+int leftWallIndex[40][20];
+int topWallIndex[40][20];
+int bottomWallIndex[40][20];
 
 double score=0;
 int keyPress =0;
@@ -157,8 +157,8 @@ void displayWire(void){
     
     for (int i = 0; i < 40 ; i++) { //RIGHT WALL
         for (int j=-10; j<10; j++) {
-            rightWall[i][j]=gameColors[startIndex][3];
-            rightWallIndex[i][j] = startIndex;
+            rightWall[i][j+10]=gameColors[startIndex][3];
+            rightWallIndex[i][j+10] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -169,11 +169,13 @@ void displayWire(void){
         }
         
     }
-    
+    std::cout << "after right wall ";
+    std::cout<< startIndex;
+    std::cout << "\n";
     for (int i = 0; i < 40 ; i++) { //LEFT WALL
         for (int j=-10; j<10; j++) {
-            leftWall[i][j]=gameColors[startIndex][3];
-            leftWallIndex[i][j] = startIndex;
+            leftWall[i][j+10]=gameColors[startIndex][3];
+            leftWallIndex[i][j+10] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -184,11 +186,13 @@ void displayWire(void){
         }
         
     }
-    
+    std::cout << "after left wall ";
+    std::cout<< startIndex;
+    std::cout << "\n";
     for (int i = 0; i < 40 ; i++) { //TOP WALL
         for (int j=-10; j<10; j++) {
-            topWall[i][j]=gameColors[startIndex][3];
-            topWallIndex[i][j] = startIndex;
+            topWall[i][j+10]=gameColors[startIndex][3];
+            topWallIndex[i][j+10] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -199,11 +203,13 @@ void displayWire(void){
         }
         
     }
-    
+    std::cout << "after top wall ";
+    std::cout<< startIndex;
+    std::cout << "\n";
     for (int i = 0; i < 40 ; i++) { //BOTTOM WALL
         for (int j=-10; j<10; j++) {
-            bottomWall[i][j]=gameColors[startIndex][3];
-            bottomWallIndex[i][j] = startIndex;
+            bottomWall[i][j+10]=gameColors[startIndex][3];
+            bottomWallIndex[i][j+10] = startIndex;
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -214,7 +220,9 @@ void displayWire(void){
         }
         
     }
-    
+    std::cout << "after bottom wall ";
+    std::cout<< startIndex;
+    std::cout << "\n";
     for (int i = -20; i < 20 ; i++) { //FRONT WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
@@ -227,6 +235,9 @@ void displayWire(void){
         }
         
     }
+    std::cout << "after front wall ";
+    std::cout<< startIndex;
+    std::cout << "\n";
     glutSwapBuffers();
     //glFlush();
 }
@@ -240,22 +251,6 @@ void animate(int x)
 
 void animateIdle()
 {
-    if(sphereTranslateX >= 4){
-        score+=rightWall[(int)sphereTranslateY][(int)sphereTranslateZ];
-        gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][0] = 1.0;
-        gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][1] = 1.0;
-        gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][2] = 1.0;
-        gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][3] = 0.0;
-        
-        std::cout << "\n";
-        std::cout << (int)sphereTranslateY;
-        std::cout << "\n";
-        std::cout << (int)sphereTranslateZ;
-        std::cout << "\n";
-        std::cout << rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ];
-        std::cout << "\n";
-        std::cout << " ============= ";
-    }
     if (start) {
         if (zLookAt > 20) {
             if(sphereTranslateX >= 4){
@@ -364,9 +359,6 @@ void animateIdle()
             zLookAt -= 0.05;
             sphereTranslateZ -=0.05;
         }
-        startIndex = 0;
-//        std::cout << score;
-//        std::cout << "\n";
     }
     sphereColor=1;
     double u;
@@ -398,6 +390,7 @@ void animateIdle()
             downPress--;
         }
     }
+    startIndex = 0;
     glutPostRedisplay();
     
 }
