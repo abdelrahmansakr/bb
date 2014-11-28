@@ -17,6 +17,7 @@ double sphereTranslateZ = 98;
 int decrementX = 1;
 int decrementY = 1;
 int decrementZ = 1;
+int sphereColor=1;
 
 
 void SetupLights()
@@ -55,7 +56,7 @@ void displayWire(void){
     gluLookAt(0, 0, zLookAt, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     
     glPushMatrix();
-    glColor3f(1, 1, 1);
+    glColor3f(sphereColor, sphereColor, sphereColor);
     glTranslated(sphereTranslateX, sphereTranslateY, sphereTranslateZ);
     glutSolidSphere(0.15, 50, 50);
     glPopMatrix();
@@ -340,6 +341,11 @@ void animateIdle()
 //        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
 //            sphereTranslateY -=0.005;
 //        }
+        
+        if(sphereTranslateX >= 4 || sphereTranslateX <= -4 || sphereTranslateY >=4 || sphereTranslateY <=-4)
+            sphereColor=0;
+        else
+            sphereColor=1;
         
         if (decrementX == 1) {
             sphereTranslateX -=0.05;
