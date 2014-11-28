@@ -25,6 +25,11 @@ double savedSphereTranslateY = 0;
 double savedSphereTranslateZ = 97;
 double savedGameColors[4000][4];
 
+double upX = 0;
+double upY = 1;
+double upZ = 0;
+int r=0;
+bool enhancedCamera=true;
 
 int decrementX = 1;
 int decrementY = 1;
@@ -39,6 +44,11 @@ int rightWallIndex[40][20];
 int leftWallIndex[40][20];
 int topWallIndex[40][20];
 int bottomWallIndex[40][20];
+int left =0;
+int right =0;
+int up =0;
+int down =0;
+
 
 double score=0;
 int keyPress =0;
@@ -79,11 +89,11 @@ void SetupLights()
 void print(int x, int y, int z, char *string, float r, float g , float b, int font)
 {
     glColor3f(r, g, b);
-	int len, i;
-	glRasterPos3d(x, y, z);
-	len = (int) strlen(string);
-	for (i = 0; i < len; i++)
-	{
+    int len, i;
+    glRasterPos3d(x, y, z);
+    len = (int) strlen(string);
+    for (i = 0; i < len; i++)
+    {
         if(font == 0){
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,string[i]);
         }
@@ -93,7 +103,7 @@ void print(int x, int y, int z, char *string, float r, float g , float b, int fo
         else if (font == 2){
             glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12,string[i]);
         }
-	}
+    }
 }
 
 void print3d(int x, int y, char *string)
@@ -102,45 +112,45 @@ void print3d(int x, int y, char *string)
     
     //Assume we are in MODEL_VIEW already
     
-	glPushMatrix ();
+    glPushMatrix ();
     
-	glLoadIdentity ();
+    glLoadIdentity ();
     
-	glMatrixMode(GL_PROJECTION);
+    glMatrixMode(GL_PROJECTION);
     
-	glPushMatrix ();
+    glPushMatrix ();
     
-	glLoadIdentity();
+    glLoadIdentity();
     
     
     
-	GLint viewport [4];
+    GLint viewport [4];
     
-	glGetIntegerv (GL_VIEWPORT, viewport);
+    glGetIntegerv (GL_VIEWPORT, viewport);
     
-	gluOrtho2D (0,viewport[2], viewport[3], 0);
+    gluOrtho2D (0,viewport[2], viewport[3], 0);
     
-	
     
-	glDepthFunc (GL_ALWAYS);
     
-	glColor3f (0,0,0);
+    glDepthFunc (GL_ALWAYS);
     
-	glRasterPos3f(x, y, 110);
+    glColor3f (0,0,0);
+    
+    glRasterPos3f(x, y, 110);
     
     int len, i;
     len = (int) strlen(string);
-	for (i = 0; i < len; i++) {
-		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
+    for (i = 0; i < len; i++) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, string[i]);
     }
     
-	glDepthFunc (GL_LESS);
+    glDepthFunc (GL_LESS);
     
-	glPopMatrix ();
+    glPopMatrix ();
     
-	glMatrixMode(GL_MODELVIEW);
+    glMatrixMode(GL_MODELVIEW);
     
-	glPopMatrix ();
+    glPopMatrix ();
     
 }
 
@@ -292,7 +302,7 @@ void animate(int x)
 void animateIdle()
 {
     if (start) {
-  
+        
         if (zLookAt > 20) {
             
             if (!enhancedCamera) {
@@ -302,38 +312,39 @@ void animateIdle()
                 
             }
             else {
+                
                 if (r == 0) {
                     upX = 0;
                     upY = 1;
                     upZ = 0;
-                    r++;
+                    
                 }
-                else if (r == 1) {
+                else if (r == 10) {
                     upX = -1;
                     upY = 1;
                     upZ = 0;
-                    r++;
                 }
-                else if (r == 2) {
+                
+                else if (r == 50) {
                     upX = -1;
                     upY = 0;
                     upZ = 0;
-                    r++;
+                    
                 }
-                else if (r == 3) {
+                else if (r == 100) {
                     upX = -1;
                     upY = -1;
                     upZ = 0;
-                    r++;
+                    
                 }
-                else if ( r == 4) {
+                else if ( r == 150) {
                     upX = 0;
                     upY = -1;
                     upZ = 0;
                     r = 0;
                 }
                 
-                
+                r++;
             }
             
             if(sphereTranslateX >= 4){
@@ -504,6 +515,15 @@ void keyPressed (unsigned char key, int x, int y) {
                 gameColors[i][2] = savedGameColors[i][2];
                 gameColors[i][3] = savedGameColors[i][3];
             }
+            left=0;
+            right=0;
+            up=0;
+            down=0;
+            upX = 0;
+            upY = 1;
+            upZ = 0;
+            r=0;
+            enhancedCamera=false;
             rightXOffset = 5;
             zLookAt = 110;
             startIndex = 0;
@@ -530,7 +550,8 @@ void keyPressed (unsigned char key, int x, int y) {
             arrowRotationAngleZ = 0;
             arrowRotationAngleX = -90;
         }
-        else if (key == 'r') {
+        else
+            if (key == 'r') {
             for (int i = 0; i < 4000; i++) {
                 gameColors[i][0] = savedGameColors[i][0];
                 gameColors[i][1] = savedGameColors[i][1];
@@ -544,16 +565,21 @@ void keyPressed (unsigned char key, int x, int y) {
             zLookAt = savedZLookAt;
             
             replay = true;
-
-        }
+            
+            }else{
+                if(key== 'e')
+                    enhancedCamera=!enhancedCamera;
+            }
         
-  
+        
+        
     }
     
 }
 void keySpecial (int key, int x, int y) {
     if (!start) {
         if(key==GLUT_KEY_LEFT){
+            left++;
             leftPress=10;
             if (arrowRotationAngleX < -90) {
                 arrowRotationAngleZ -= 20;
@@ -564,6 +590,7 @@ void keySpecial (int key, int x, int y) {
         }
         else
             if (key==GLUT_KEY_RIGHT) {
+                right++;
                 rightPress=10;
                 if (arrowRotationAngleX < -90) {
                     arrowRotationAngleZ += 20;
@@ -573,10 +600,12 @@ void keySpecial (int key, int x, int y) {
                 }
             }else
                 if (key==GLUT_KEY_UP) {
+                    up++;
                     upPress=10;
                     arrowRotationAngleX += 20;
                 }else
                     if (GLUT_KEY_DOWN) {
+                        down++;
                         downPress=10;
                         arrowRotationAngleX -= 20;
                     }
