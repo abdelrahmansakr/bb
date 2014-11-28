@@ -52,6 +52,8 @@ double deltaSphereY=0;
 double arrowRotationAngleZ = 0;
 double arrowRotationAngleX = -90;
 
+bool replay = false;
+
 void SetupLights()
 {
     GLfloat mat_ambient[] = { 0.7f, 0.7f, 0.7, 1.0f };
@@ -320,30 +322,53 @@ void animateIdle()
                         }
             
             if (decrementX == 1 && sphereTranslateX!=0) {
-                sphereTranslateX -=0.05;
+                if (!replay)
+                    sphereTranslateX -=0.05;
+                else
+                    sphereTranslateX -=0.005;
+                
                 if (sphereTranslateX <= -4) {
                     decrementX = 0;
                 }
             } else if (decrementX == 0 && sphereTranslateX!=0) {
-                sphereTranslateX +=0.05;
+                if (!replay)
+                    sphereTranslateX +=0.05;
+                else
+                    sphereTranslateX +=0.005;
+                    
                 if (sphereTranslateX >= 4) {
                     decrementX = 1;
                 }
             }
             
             if (decrementY == 1 &&  sphereTranslateY!=0) {
-                sphereTranslateY -=0.05;
+                if (!replay)
+                    sphereTranslateY -=0.05;
+                else
+                    sphereTranslateY -=0.005;
+                
                 if (sphereTranslateY <= -4) {
                     decrementY = 0;
                 }
             } else if (decrementY == 0&&sphereTranslateY!=0) {
-                sphereTranslateY +=0.05;
+                if (!replay)
+                    sphereTranslateY +=0.05;
+                else
+                    sphereTranslateY +=0.005;
+
                 if (sphereTranslateY >= 4) {
                     decrementY = 1;
                 }
             }
-            zLookAt -= 0.05;
-            sphereTranslateZ -=0.05;
+            if (!replay) {
+                zLookAt -= 0.05;
+                sphereTranslateZ -=0.05;
+            }
+            else{
+                zLookAt -= 0.005;
+                sphereTranslateZ -=0.005;
+            }
+
         }
     }
     
@@ -411,6 +436,8 @@ void keyPressed (unsigned char key, int x, int y) {
         sphereTranslateY = savedSphereTranslateY;
         sphereTranslateZ = savedSphereTranslateZ;
         zLookAt = savedZLookAt;
+        
+        replay = true;
 
     }
     
