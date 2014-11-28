@@ -14,6 +14,9 @@ int startIndex = 0;
 double sphereTranslateX = 0;
 double sphereTranslateY = 0;
 double sphereTranslateZ = 100;
+int decrementX = 1;
+int decrementY = 1;
+int decrementZ = 1;
 
 
 void SetupLights()
@@ -320,18 +323,43 @@ void animate(int x)
 void animateIdle()
 {
     if (zLookAt > 20) {
-        if (sphereTranslateX > -10 && sphereTranslateX < 0) {
-            sphereTranslateX -=0.005;
+//        if (sphereTranslateX > -10 && sphereTranslateX < 0) {
+//            sphereTranslateX -=0.005;
+//        }
+//        else if (sphereTranslateX < 10 && sphereTranslateX > 0) {
+//            sphereTranslateX +=0.005;
+//        }
+//        if (sphereTranslateY > 0 && sphereTranslateY < 10) {
+//            sphereTranslateY +=0.005;
+//        }
+//        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
+//            sphereTranslateY -=0.005;
+//        }
+        
+        if (decrementX == 1) {
+            sphereTranslateX -=0.05;
+            if (sphereTranslateX <= -10) {
+                decrementX = 0;
+            }
+        } else if (decrementX == 0) {
+            sphereTranslateX +=0.05;
+            if (sphereTranslateX >= 10) {
+                decrementX = 1;
+            }
         }
-        else if (sphereTranslateX < 10 && sphereTranslateX > 0) {
-            sphereTranslateX +=0.005;
+        
+        if (decrementY == 1) {
+            sphereTranslateY -=0.05;
+            if (sphereTranslateY <= -10) {
+                decrementY = 0;
+            }
+        } else if (decrementY == 0) {
+            sphereTranslateY +=0.05;
+            if (sphereTranslateY >= 10) {
+                decrementY = 1;
+            }
         }
-        if (sphereTranslateY > 0 && sphereTranslateY < 10) {
-            sphereTranslateY +=0.005;
-        }
-        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
-            sphereTranslateY -=0.005;
-        }
+        
         zLookAt -= 0.05;
         sphereTranslateZ -=0.05;
     }
