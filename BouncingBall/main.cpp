@@ -13,7 +13,7 @@ double gameColors[4000][4];
 int startIndex = 0;
 double sphereTranslateX = 2;
 double sphereTranslateY = 1;
-double sphereTranslateZ = 40;
+double sphereTranslateZ = 97;
 int decrementX = 1;
 int decrementY = 1;
 int decrementZ = 1;
@@ -240,23 +240,25 @@ void animate(int x)
 
 void animateIdle()
 {
+    std::cout << sphereTranslateZ/2.425;
+    std::cout <<"\n";
     if (start) {
         if (zLookAt > 20) {
             if(sphereTranslateX >= 4){
-                score+=rightWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                score+=rightWall[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY];
                 gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][0] = 1.0;
                 gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][1] = 1.0;
                 gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][2] = 1.0;
                 gameColors[rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][3] = 0.0;
                 
-                        std::cout << "\n";
-                        std::cout << (int)sphereTranslateY;
-                        std::cout << "\n";
-                        std::cout << (int)sphereTranslateZ;
-                        std::cout << "\n";
-                        std::cout << rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ];
-                        std::cout << "\n";
-                        std::cout << " ============= ";
+//                        std::cout << "\n";
+//                        std::cout << (int)sphereTranslateY;
+//                        std::cout << "\n";
+//                        std::cout << (int)sphereTranslateZ;
+//                        std::cout << "\n";
+//                        std::cout << rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ];
+//                        std::cout << "\n";
+//                        std::cout << " ============= ";
 
                 
 //                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][0] = 1;
