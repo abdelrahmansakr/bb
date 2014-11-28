@@ -5,7 +5,11 @@
 #include <stdlib.h>
 #include <iostream>
 #include "glut.h"
+#include <vector>
 
+
+int *scores = new int[100];
+int game=0;
 int rightXOffset = 5;
 double colorsArray[7][4];
 double zLookAt = 110;
@@ -51,10 +55,9 @@ double deltaSphereY=0;
 
 double arrowRotationAngleZ = 0;
 double arrowRotationAngleX = -90;
+double totalScore = 0;
 
 bool replay = false;
-
-int totalScore = 0;
 
 void SetupLights()
 {
@@ -142,7 +145,16 @@ void print3d(int x, int y, char *string)
 }
 
 
-
+void print(int x, int y,int z, char *string)
+{
+    int len, i;
+    glRasterPos3d(x, y,z);
+    len = (int) strlen(string);
+    for (i = 0; i < len; i++)
+    {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,string[i]);
+    }
+}
 
 void displayWire(void){
     
@@ -161,6 +173,12 @@ void displayWire(void){
     // print(-10,10,110,(char *)scoreString,0.2,0.6,0.97,0);
     print3d(-10, 10, (char *)scoreString);
     
+    if (zLookAt<=20) {
+        glColor3f(0,0,0);
+        char * stC[100];
+        sprintf((char *)stC,"Score: %f", (score) );
+        print(5,14,0,(char *)stC);
+    }
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     gluPerspective(60, 800 / 600, 0.001, 10000);
@@ -269,6 +287,7 @@ void animate(int x)
     glutPostRedisplay();
     
 }
+
 
 void animateIdle()
 {
@@ -427,6 +446,9 @@ void keyPressed (unsigned char key, int x, int y) {
         start = !start;
     }else{
         if (key == 'n') {
+            scores[game]=score;
+            totalScore+=score;
+            game++;
             replay =false;
             for (int i = 0; i < 4000; i++) {
                 gameColors[i][0] = savedGameColors[i][0];
