@@ -54,6 +54,8 @@ double arrowRotationAngleX = -90;
 
 bool replay = false;
 
+int totalScore = 0;
+
 void SetupLights()
 {
     GLfloat mat_ambient[] = { 0.7f, 0.7f, 0.7, 1.0f };
@@ -410,6 +412,7 @@ void animateIdle()
     glutPostRedisplay();
     
 }
+
 void keyPressed (unsigned char key, int x, int y) {
     if (key==' '){  // If the 'spacebar' key has been pressed
         for (int i = 0; i < 4000; i++) {
