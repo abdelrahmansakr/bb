@@ -41,6 +41,9 @@ int indexToBeRemoved = 0;
 double deltaSphereX=0;
 double deltaSphereY=0;
 
+double arrowRotationAngleZ = 0;
+double arrowRotationAngleX = 0;
+
 void SetupLights()
 {
     GLfloat mat_ambient[] = { 0.7f, 0.7f, 0.7, 1.0f };
@@ -150,7 +153,21 @@ void displayWire(void){
     glLoadIdentity();
     gluPerspective(60, 800 / 600, 0.001, 10000);
     gluLookAt(0, 0, zLookAt, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
+    
 
+    if (start == false) {
+        glPushMatrix();
+        glColor3f(0, 0, 0);
+        glTranslated(sphereTranslateX, sphereTranslateY, sphereTranslateZ-0.05);
+        glRotated(arrowRotationAngleZ, 0, 0, 1);
+        glRotated(arrowRotationAngleX, 1, 0, 0);
+        glScaled(0.2, 1, 0.15);
+        glutSolidCone(1, 1, 5, 5);
+        glutSolidCube(1);
+        glPopMatrix();
+    }
+
+    
     
     glPushMatrix();
     glColor3f(sphereColor, sphereColor, sphereColor);
@@ -369,16 +386,20 @@ void keyPressed (unsigned char key, int x, int y) {
 void keySpecial (int key, int x, int y) {
     if(key==GLUT_KEY_LEFT){
         leftPress=10;
+        arrowRotationAngleZ += 20;
     }
     else
         if (key==GLUT_KEY_RIGHT) {
             rightPress=10;
+            arrowRotationAngleZ -= 20;
         }else
             if (key==GLUT_KEY_UP) {
                 upPress=10;
+                arrowRotationAngleX -= 20;
             }else
                 if (GLUT_KEY_DOWN) {
                     downPress=10;
+                    arrowRotationAngleX += 20;
                 }
 }
 
