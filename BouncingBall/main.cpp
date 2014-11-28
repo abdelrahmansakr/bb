@@ -140,196 +140,6 @@ void displayWire(void){
         }
         
     }
-    
-    
-    
-    //    //Cube1
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.0, 0.0, 1.0);
-    //    glTranslated(5.0, -2.0, 1.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube2
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(1.0, 0.0, 0.0);
-    //    glTranslated(5.0, -3, 1.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube2//////////////
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.3, 1, 0.7);
-    //    glTranslated(5.0, 0, 2.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.7, 0, 0.3);
-    //    glTranslated(5.0, -1.0, 2.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.3, 1, 0.7);
-    //    glTranslated(5.0, -2.0, 2.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube2
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.7, 0, 0.3);
-    //    glTranslated(5.0, -3, 2.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    /////
-    //
-    //    //Cube2
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0, 0, 0);
-    //    glTranslated(5.0, 0, 3.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.7, 0.7, 0.7);
-    //    glTranslated(5.0, -1.0, 3.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0, 0, 0);
-    //    glTranslated(5.0, -2.0, 3.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube2
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.7, 0.7, 0.7);
-    //    glTranslated(5.0, -3, 3.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube2//////////////
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.6, 0.1, 0.3);
-    //    glTranslated(5.0, 0, 4.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.5, 0.5, 0.5);
-    //    glTranslated(5.0, -1.0, 4.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.6, 0.1, 0.3);
-    //    glTranslated(5.0, -2.0, 4.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube2
-    //    glPushMatrix();
-    //    glScaled(1, 1, 2);
-    //    glColor3f(0.5, 0.5, 0.5);
-    //    glTranslated(5.0, -3, 4.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //
-    //
-    //
-    //    ///////////////////////////////////////////////
-    //
-    //    //Cube2
-    //    glPushMatrix();
-    //    glColor3f(0.0, 0.0, 1.0);
-    //    glTranslated(-5.0, 0, -1.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glColor3f(1.0, 0.0, 0.0);
-    //    glTranslated(-5.0, -1.0, -1.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube1
-    //    glPushMatrix();
-    //    glColor3f(0.0, 0.0, 1.0);
-    //    glTranslated(-5.0, -2.0, -1.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    //Cube2
-    //    glPushMatrix();
-    //    glColor3f(1.0, 0.0, 0.0);
-    //    glTranslated(-5.0, -3, -1.0);
-    //    glutSolidCube(1);
-    //    glPopMatrix();
-    //
-    //    int r = 0 ;
-    //
-    //    for (int j=0; j>-4; j--) {
-    //        for (int i =10; i>-2; i--) {
-    //            glPushMatrix();
-    //            if (r) {
-    //                glColor3f(r, 0, 0);
-    //                r=0;
-    //            }else{
-    //                glColor3f(0,r,0);
-    //                r=1;
-    //            }
-    //            glTranslated(-5.0, j, i);
-    //            glutSolidCube(1);
-    //            glPopMatrix();
-    //        }
-    //        r=(r==0)?1:0;
-    //    }
-    //
-    //    for (int i =5; i>-5; i--) {
-    //        for (int j=0; j>-4; j--) {
-    //            glPushMatrix();
-    //            if (r) {
-    //                glColor3f(r, 0, 0);
-    //                r=0;
-    //            }else{
-    //                glColor3f(0,r,0);
-    //                r=1;
-    //            }
-    //            glTranslated(i , j, -2);
-    //            glutSolidCube(1);
-    //            glPopMatrix();
-    //        }
-    //        r=(r==0)?1:0;
-    //    }
-    
-    
-    
-    
-    
     glutSwapBuffers();
     //glFlush();
 }
@@ -344,101 +154,89 @@ void animate(int x)
 void animateIdle()
 {
     if (start) {
-    if (zLookAt > 20) {
-        //        if (sphereTranslateX > -10 && sphereTranslateX < 0) {
-        //            sphereTranslateX -=0.005;
-        //        }
-        //        else if (sphereTranslateX < 10 && sphereTranslateX > 0) {
-        //            sphereTranslateX +=0.005;
-        //        }
-        //        if (sphereTranslateY > 0 && sphereTranslateY < 10) {
-        //            sphereTranslateY +=0.005;
-        //        }
-        //        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
-        //            sphereTranslateY -=0.005;
-        //        }
-        if(sphereTranslateX >= 4){
-            score+=rightWall[(int)sphereTranslateY][(int)sphereTranslateZ];
-            sphereColor=0;
-            color=10;
-        }else
-            if(sphereTranslateX <= -4){
-                score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+        if (zLookAt > 20) {
+            if(sphereTranslateX >= 4){
+                score+=rightWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                 sphereColor=0;
                 color=10;
             }else
-                if(sphereTranslateY >= 4){
-                    score+=topWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                if(sphereTranslateX <= -4){
+                    score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                     sphereColor=0;
                     color=10;
                 }else
-                    if(sphereTranslateX <= -4){
-                        score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                    if(sphereTranslateY >= 4){
+                        score+=topWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                         sphereColor=0;
                         color=10;
-                    }else{
-                        if(color <0){
-                        sphereColor=1;
-                            color--;
+                    }else
+                        if(sphereTranslateX <= -4){
+                            score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                            sphereColor=0;
+                            color=10;
+                        }else{
+                            if(color <0){
+                                sphereColor=1;
+                                color--;
+                            }
+                            
                         }
-                        
-                    }
-        
-        if (decrementX == 1) {
-            sphereTranslateX -=0.05;
-            if (sphereTranslateX <= -4) {
-                decrementX = 0;
+            
+            if (decrementX == 1) {
+                sphereTranslateX -=0.05;
+                if (sphereTranslateX <= -4) {
+                    decrementX = 0;
+                }
+            } else if (decrementX == 0) {
+                sphereTranslateX +=0.05;
+                if (sphereTranslateX >= 4) {
+                    decrementX = 1;
+                }
             }
-        } else if (decrementX == 0) {
-            sphereTranslateX +=0.05;
-            if (sphereTranslateX >= 4) {
-                decrementX = 1;
+            
+            if (decrementY == 1) {
+                sphereTranslateY -=0.05;
+                if (sphereTranslateY <= -4) {
+                    decrementY = 0;
+                }
+            } else if (decrementY == 0) {
+                sphereTranslateY +=0.05;
+                if (sphereTranslateY >= 4) {
+                    decrementY = 1;
+                }
             }
+            zLookAt -= 0.05;
+            sphereTranslateZ -=0.05;
         }
-        
-        if (decrementY == 1) {
-            sphereTranslateY -=0.05;
-            if (sphereTranslateY <= -4) {
-                decrementY = 0;
-            }
-        } else if (decrementY == 0) {
-            sphereTranslateY +=0.05;
-            if (sphereTranslateY >= 4) {
-                decrementY = 1;
-            }
-        }
-        zLookAt -= 0.05;
-        sphereTranslateZ -=0.05;
-    }
-    startIndex = 0;
+        startIndex = 0;
     }
     sphereColor=1;
     double u;
     srand( unsigned(time(NULL) ));
     u=(double)rand()/(RAND_MAX+1)*(0.2-0.1)+0.1;
     
-
+    
     if (rightPress>0) {
-        if (sphereTranslateX+0.1 <= 4) {
-        sphereTranslateX+=0.1;
-        rightPress--;
+        if (sphereTranslateX+0.05 <= 4) {
+            sphereTranslateX+=0.05;
+            rightPress--;
         }
     }
     if (leftPress>0) {
-        if (sphereTranslateX-0.1 >= -4) {
-            sphereTranslateX-=0.1;
+        if (sphereTranslateX-0.05 >= -4) {
+            sphereTranslateX-=0.05;
             leftPress--;
         }
     }
     if (upPress>0) {
-        if (sphereTranslateY+0.1 <= 4) {
-            sphereTranslateY+=0.1;
+        if (sphereTranslateY+0.05 <= 4) {
+            sphereTranslateY+=0.05;
             upPress--;
         }
     }
     if (downPress>0) {
-        if (sphereTranslateY-0.1 >= -4) {
-            sphereTranslateY-=0.1;
+        if (sphereTranslateY-0.05 >= -4) {
+            sphereTranslateY-=0.05;
             downPress--;
         }
     }
@@ -449,7 +247,7 @@ void keyPressed (unsigned char key, int x, int y) {
     if (key==' '){  // If the 'spacebar' key has been pressed
         start = !start;
     }
-
+    
 }
 void keySpecial (int key, int x, int y) {
     if(key==GLUT_KEY_LEFT){
