@@ -8,9 +8,12 @@
 
 int rightXOffset = 5;
 double colorsArray[7][4];
-double zLookAt = 60;
+double zLookAt = 110;
 double gameColors[4000][4];
 int startIndex = 0;
+double sphereTranslateX = 0;
+double sphereTranslateY = 0;
+double sphereTranslateZ = 70;
 
 
 void SetupLights()
@@ -48,7 +51,13 @@ void displayWire(void){
     gluPerspective(60, 800 / 600, 0.001, 10000);
     gluLookAt(0, 0, zLookAt, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     
-    for (int i = -20; i < 20 ; i++) { //RIGHT WALL
+    glPushMatrix();
+    glColor3f(1, 1, 1);
+    glTranslated(sphereTranslateX, sphereTranslateY, sphereTranslateZ);
+    glutSolidSphere(0.15, 50, 50);
+    glPopMatrix();
+    
+    for (int i = 0; i < 40 ; i++) { //RIGHT WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
@@ -61,7 +70,7 @@ void displayWire(void){
 
     }
     
-    for (int i = -20; i < 20 ; i++) { //LEFT WALL
+    for (int i = 0; i < 40 ; i++) { //LEFT WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
@@ -74,7 +83,7 @@ void displayWire(void){
         
     }
     
-    for (int i = -20; i < 20 ; i++) { //TOP WALL
+    for (int i = 0; i < 40 ; i++) { //TOP WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
@@ -87,7 +96,7 @@ void displayWire(void){
         
     }
     
-    for (int i = -20; i < 20 ; i++) { //BOTTOM WALL
+    for (int i = 0; i < 40 ; i++) { //BOTTOM WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
@@ -106,7 +115,7 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
-            glTranslated(j, i , -20);
+            glTranslated(j, i , 0);
             glutSolidCube(1);
             glPopMatrix();
         }
@@ -315,9 +324,11 @@ void animate(int x)
 
 void animateIdle()
 {
-    if (zLookAt > 0.1) {
+    if (zLookAt > 0.05) {
         zLookAt -= 0.05;
-        
+        sphereTranslateX -=0.0005;
+        sphereTranslateY -=0.0;
+        sphereTranslateZ -=0.05;
     }
     
     startIndex = 0;
