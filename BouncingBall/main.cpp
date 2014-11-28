@@ -422,14 +422,49 @@ void keyPressed (unsigned char key, int x, int y) {
         savedSphereTranslateY = sphereTranslateY;
         savedSphereTranslateZ = sphereTranslateZ;
         start = !start;
-    }
-    else if (key == 'r') {
-        for (int i = 0; i < 4000; i++) {
-            gameColors[i][0] = savedGameColors[i][0];
-            gameColors[i][1] = savedGameColors[i][1];
-            gameColors[i][2] = savedGameColors[i][2];
-            gameColors[i][3] = savedGameColors[i][3];
+    }else{
+        if (key == 'n') {
+            for (int i = 0; i < 4000; i++) {
+                gameColors[i][0] = savedGameColors[i][0];
+                gameColors[i][1] = savedGameColors[i][1];
+                gameColors[i][2] = savedGameColors[i][2];
+                gameColors[i][3] = savedGameColors[i][3];
+            }
+             rightXOffset = 5;
+             zLookAt = 110;
+             startIndex = 0;
+             sphereTranslateX = 0;
+             sphereTranslateY = 0;
+             sphereTranslateZ = 97;
+             decrementX = 1;
+             decrementY = 1;
+             decrementZ = 1;
+             sphereColor=1;
+             score=0;
+             keyPress =0;
+             leftPress=0;
+             rightPress=0;
+             upPress=0;
+             downPress=0;
+             start=false;
+             color=0;
+             indexToBeRemoved = 0;
+            
+             deltaSphereX=0;
+             deltaSphereY=0;
+            
+             arrowRotationAngleZ = 0;
+             arrowRotationAngleX = -90;
         }
+        else if (key == 'r') {
+            for (int i = 0; i < 4000; i++) {
+                gameColors[i][0] = savedGameColors[i][0];
+                gameColors[i][1] = savedGameColors[i][1];
+                gameColors[i][2] = savedGameColors[i][2];
+                gameColors[i][3] = savedGameColors[i][3];
+            }
+    }
+    
         
         
         sphereTranslateX = savedSphereTranslateX;
@@ -443,6 +478,7 @@ void keyPressed (unsigned char key, int x, int y) {
     
 }
 void keySpecial (int key, int x, int y) {
+    if (!start) {
     if(key==GLUT_KEY_LEFT){
         leftPress=10;
         if (arrowRotationAngleX < -90) {
@@ -470,6 +506,7 @@ void keySpecial (int key, int x, int y) {
                     downPress=10;
                     arrowRotationAngleX -= 20;
                 }
+    }
 }
 
 int main(int argc, char** argv)
