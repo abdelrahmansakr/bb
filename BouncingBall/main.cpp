@@ -18,7 +18,16 @@ int decrementX = 1;
 int decrementY = 1;
 int decrementZ = 1;
 int sphereColor=1;
-
+double rightWall[40][10];
+double leftWall[40][10];
+double topWall[40][10];
+double bottomWall[40][10];
+double score=0;
+int keyPress =0;
+int leftPress=0;
+int rightPress=0;
+int upPress=0;
+int downPress=0;
 
 void SetupLights()
 {
@@ -63,6 +72,7 @@ void displayWire(void){
     
     for (int i = 0; i < 40 ; i++) { //RIGHT WALL
         for (int j=-10; j<10; j++) {
+            rightWall[i][j]=gameColors[startIndex][3];
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -71,11 +81,12 @@ void displayWire(void){
             glutSolidCube(1);
             glPopMatrix();
         }
-
+        
     }
     
     for (int i = 0; i < 40 ; i++) { //LEFT WALL
         for (int j=-10; j<10; j++) {
+            leftWall[i][j]=gameColors[startIndex][3];
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -89,6 +100,7 @@ void displayWire(void){
     
     for (int i = 0; i < 40 ; i++) { //TOP WALL
         for (int j=-10; j<10; j++) {
+            topWall[i][j]=gameColors[startIndex][3];
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -102,6 +114,7 @@ void displayWire(void){
     
     for (int i = 0; i < 40 ; i++) { //BOTTOM WALL
         for (int j=-10; j<10; j++) {
+            bottomWall[i][j]=gameColors[startIndex][3];
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
@@ -126,190 +139,190 @@ void displayWire(void){
         
     }
     
-
-
-//    //Cube1
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.0, 0.0, 1.0);
-//    glTranslated(5.0, -2.0, 1.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube2
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(1.0, 0.0, 0.0);
-//    glTranslated(5.0, -3, 1.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube2//////////////
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.3, 1, 0.7);
-//    glTranslated(5.0, 0, 2.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.7, 0, 0.3);
-//    glTranslated(5.0, -1.0, 2.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.3, 1, 0.7);
-//    glTranslated(5.0, -2.0, 2.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube2
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.7, 0, 0.3);
-//    glTranslated(5.0, -3, 2.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    /////
-//    
-//    //Cube2
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0, 0, 0);
-//    glTranslated(5.0, 0, 3.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.7, 0.7, 0.7);
-//    glTranslated(5.0, -1.0, 3.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0, 0, 0);
-//    glTranslated(5.0, -2.0, 3.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube2
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.7, 0.7, 0.7);
-//    glTranslated(5.0, -3, 3.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube2//////////////
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.6, 0.1, 0.3);
-//    glTranslated(5.0, 0, 4.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.5, 0.5, 0.5);
-//    glTranslated(5.0, -1.0, 4.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.6, 0.1, 0.3);
-//    glTranslated(5.0, -2.0, 4.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube2
-//    glPushMatrix();
-//    glScaled(1, 1, 2);
-//    glColor3f(0.5, 0.5, 0.5);
-//    glTranslated(5.0, -3, 4.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    
-//    
-//    
-//    ///////////////////////////////////////////////
-//    
-//    //Cube2
-//    glPushMatrix();
-//    glColor3f(0.0, 0.0, 1.0);
-//    glTranslated(-5.0, 0, -1.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glColor3f(1.0, 0.0, 0.0);
-//    glTranslated(-5.0, -1.0, -1.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube1
-//    glPushMatrix();
-//    glColor3f(0.0, 0.0, 1.0);
-//    glTranslated(-5.0, -2.0, -1.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    //Cube2
-//    glPushMatrix();
-//    glColor3f(1.0, 0.0, 0.0);
-//    glTranslated(-5.0, -3, -1.0);
-//    glutSolidCube(1);
-//    glPopMatrix();
-//    
-//    int r = 0 ;
-//   
-//    for (int j=0; j>-4; j--) {
-//        for (int i =10; i>-2; i--) {
-//            glPushMatrix();
-//            if (r) {
-//                glColor3f(r, 0, 0);
-//                r=0;
-//            }else{
-//                glColor3f(0,r,0);
-//                r=1;
-//            }
-//            glTranslated(-5.0, j, i);
-//            glutSolidCube(1);
-//            glPopMatrix();
-//        }
-//        r=(r==0)?1:0;
-//    }
-//    
-//    for (int i =5; i>-5; i--) {
-//        for (int j=0; j>-4; j--) {
-//            glPushMatrix();
-//            if (r) {
-//                glColor3f(r, 0, 0);
-//                r=0;
-//            }else{
-//                glColor3f(0,r,0);
-//                r=1;
-//            }
-//            glTranslated(i , j, -2);
-//            glutSolidCube(1);
-//            glPopMatrix();
-//        }
-//        r=(r==0)?1:0;
-//    }
+    
+    
+    //    //Cube1
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.0, 0.0, 1.0);
+    //    glTranslated(5.0, -2.0, 1.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube2
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(1.0, 0.0, 0.0);
+    //    glTranslated(5.0, -3, 1.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube2//////////////
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.3, 1, 0.7);
+    //    glTranslated(5.0, 0, 2.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.7, 0, 0.3);
+    //    glTranslated(5.0, -1.0, 2.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.3, 1, 0.7);
+    //    glTranslated(5.0, -2.0, 2.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube2
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.7, 0, 0.3);
+    //    glTranslated(5.0, -3, 2.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    /////
+    //
+    //    //Cube2
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0, 0, 0);
+    //    glTranslated(5.0, 0, 3.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.7, 0.7, 0.7);
+    //    glTranslated(5.0, -1.0, 3.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0, 0, 0);
+    //    glTranslated(5.0, -2.0, 3.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube2
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.7, 0.7, 0.7);
+    //    glTranslated(5.0, -3, 3.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube2//////////////
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.6, 0.1, 0.3);
+    //    glTranslated(5.0, 0, 4.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.5, 0.5, 0.5);
+    //    glTranslated(5.0, -1.0, 4.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.6, 0.1, 0.3);
+    //    glTranslated(5.0, -2.0, 4.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube2
+    //    glPushMatrix();
+    //    glScaled(1, 1, 2);
+    //    glColor3f(0.5, 0.5, 0.5);
+    //    glTranslated(5.0, -3, 4.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //
+    //
+    //
+    //    ///////////////////////////////////////////////
+    //
+    //    //Cube2
+    //    glPushMatrix();
+    //    glColor3f(0.0, 0.0, 1.0);
+    //    glTranslated(-5.0, 0, -1.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glColor3f(1.0, 0.0, 0.0);
+    //    glTranslated(-5.0, -1.0, -1.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube1
+    //    glPushMatrix();
+    //    glColor3f(0.0, 0.0, 1.0);
+    //    glTranslated(-5.0, -2.0, -1.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    //Cube2
+    //    glPushMatrix();
+    //    glColor3f(1.0, 0.0, 0.0);
+    //    glTranslated(-5.0, -3, -1.0);
+    //    glutSolidCube(1);
+    //    glPopMatrix();
+    //
+    //    int r = 0 ;
+    //
+    //    for (int j=0; j>-4; j--) {
+    //        for (int i =10; i>-2; i--) {
+    //            glPushMatrix();
+    //            if (r) {
+    //                glColor3f(r, 0, 0);
+    //                r=0;
+    //            }else{
+    //                glColor3f(0,r,0);
+    //                r=1;
+    //            }
+    //            glTranslated(-5.0, j, i);
+    //            glutSolidCube(1);
+    //            glPopMatrix();
+    //        }
+    //        r=(r==0)?1:0;
+    //    }
+    //
+    //    for (int i =5; i>-5; i--) {
+    //        for (int j=0; j>-4; j--) {
+    //            glPushMatrix();
+    //            if (r) {
+    //                glColor3f(r, 0, 0);
+    //                r=0;
+    //            }else{
+    //                glColor3f(0,r,0);
+    //                r=1;
+    //            }
+    //            glTranslated(i , j, -2);
+    //            glutSolidCube(1);
+    //            glPopMatrix();
+    //        }
+    //        r=(r==0)?1:0;
+    //    }
     
     
     
@@ -329,23 +342,53 @@ void animate(int x)
 void animateIdle()
 {
     if (zLookAt > 20) {
-//        if (sphereTranslateX > -10 && sphereTranslateX < 0) {
-//            sphereTranslateX -=0.005;
-//        }
-//        else if (sphereTranslateX < 10 && sphereTranslateX > 0) {
-//            sphereTranslateX +=0.005;
-//        }
-//        if (sphereTranslateY > 0 && sphereTranslateY < 10) {
-//            sphereTranslateY +=0.005;
-//        }
-//        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
-//            sphereTranslateY -=0.005;
-//        }
+        //        if (sphereTranslateX > -10 && sphereTranslateX < 0) {
+        //            sphereTranslateX -=0.005;
+        //        }
+        //        else if (sphereTranslateX < 10 && sphereTranslateX > 0) {
+        //            sphereTranslateX +=0.005;
+        //        }
+        //        if (sphereTranslateY > 0 && sphereTranslateY < 10) {
+        //            sphereTranslateY +=0.005;
+        //        }
+        //        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
+        //            sphereTranslateY -=0.005;
+        //        }
         
-        if(sphereTranslateX >= 4 || sphereTranslateX <= -4 || sphereTranslateY >=4 || sphereTranslateY <=-4)
+        
+        if(sphereTranslateX >= 4){
+            score+=rightWall[(int)sphereTranslateY][(int)sphereTranslateZ];
             sphereColor=0;
-        else
-            sphereColor=1;
+        }else
+            if(sphereTranslateX <= -4){
+                score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                sphereColor=0;
+            }else
+                if(sphereTranslateY >= 4){
+                    score+=topWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                    sphereColor=0;
+                }else
+                    if(sphereTranslateX <= -4){
+                        score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                        sphereColor=0;
+                    }else
+                        sphereColor=1;
+        if (rightPress>0) {
+            sphereTranslateX+=0.2;
+            rightPress--;
+        }
+        if (leftPress>0) {
+            sphereTranslateX-=0.2;
+            leftPress--;
+        }
+        if (upPress>0) {
+            sphereTranslateY+=0.2;
+            upPress--;
+        }
+        if (downPress>0) {
+            sphereTranslateY-=0.2;
+            downPress--;
+        }
         
         if (decrementX == 1) {
             sphereTranslateX -=0.05;
@@ -378,6 +421,25 @@ void animateIdle()
     startIndex = 0;
     glutPostRedisplay();
     
+}
+void keyPressed (unsigned char key, int x, int y) {
+    if (key=='a') {
+        keyPress=10;
+    }
+}
+void keySpecial (int key, int x, int y) {
+    if(key==GLUT_KEY_LEFT)
+        leftPress=10;
+    else
+        if (key==GLUT_KEY_RIGHT) {
+            rightPress=10;
+        }else
+            if (key==GLUT_KEY_UP) {
+                upPress=10;
+            }else
+                if (GLUT_KEY_DOWN) {
+                    downPress=10;
+                }
 }
 
 int main(int argc, char** argv)
@@ -436,7 +498,7 @@ int main(int argc, char** argv)
             default:
                 break;
         }
-
+        
     }
     
     for (int i = 0; i < 4000; i++) {
@@ -446,6 +508,7 @@ int main(int argc, char** argv)
         gameColors[i][2] = colorsArray[x][2];
         gameColors[i][3] = colorsArray[x][3];
     }
+    
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB|GLUT_DEPTH);
     glutInitWindowSize(800,600);
@@ -458,8 +521,10 @@ int main(int argc, char** argv)
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_NORMALIZE);
     glutIdleFunc(animateIdle);
- //   glutTimerFunc(0.001, animate, 1);
+    //   glutTimerFunc(0.001, animate, 1);
     glClearColor(1.0,1.0,1.0,0.0);
+//    glutKeyboardFunc(keyPressed); // Tell GLUT to use the method "keyPressed" for key presses
+    glutSpecialFunc(keySpecial);
     glutMainLoop();
     return 0;
 }
