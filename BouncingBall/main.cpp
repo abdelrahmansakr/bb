@@ -240,8 +240,6 @@ void animate(int x)
 
 void animateIdle()
 {
-    std::cout << sphereTranslateZ/2.425;
-    std::cout <<"\n";
     if (start) {
         if (zLookAt > 20) {
             if(sphereTranslateX >= 4){
@@ -250,47 +248,16 @@ void animateIdle()
                 gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][1] = 1.0;
                 gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][2] = 1.0;
                 gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][3] = 0.0;
-                
-//                        std::cout << "\n";
-//                        std::cout << (int)sphereTranslateY;
-//                        std::cout << "\n";
-//                        std::cout << (int)sphereTranslateZ;
-//                        std::cout << "\n";
-//                        std::cout << rightWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ];
-//                        std::cout << "\n";
-//                        std::cout << " ============= ";
-
-                
-//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][0] = 1;
-//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][1] = 1;
-//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][2] = 1;
-//                gameColors[800-(int)sphereTranslateZ-(int)sphereTranslateY][3] = 0;
-//
-//                gameColors[700][0] = 1;
-//                gameColors[700][1] = 1;
-//                gameColors[700][2] = 1;
-//                gameColors[700][3] = 0;
-//                
-//                gameColors[720][0] = 1;
-//                gameColors[720][1] = 1;
-//                gameColors[720][2] = 1;
-//                gameColors[720][3] = 0;
-//                
-//                gameColors[320][0] = 1;
-//                gameColors[320][1] = 1;
-//                gameColors[320][2] = 1;
-//                gameColors[320][3] = 0;
-                
                 sphereColor=0;
                 color=10;
             }else
                 if(sphereTranslateX <= -4){
                     score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                     
-                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][0] = 1.0;
-                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][1] = 1.0;
-                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][2] = 1.0;
-                    gameColors[leftWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]+12][3] = 0.0;
+                    gameColors[leftWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][0] = 1.0;
+                    gameColors[leftWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][1] = 1.0;
+                    gameColors[leftWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][2] = 1.0;
+                    gameColors[leftWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][3] = 0.0;
                     
                     sphereColor=0;
                     color=10;
@@ -298,21 +265,21 @@ void animateIdle()
                     if(sphereTranslateY >= 4){
                         score+=topWall[(int)sphereTranslateZ][(int)sphereTranslateY];
                         
-                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][0] = 1.0;
-                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][1] = 1.0;
-                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][2] = 1.0;
-                        gameColors[topWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][3] = 0.0;
+                        gameColors[topWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateX+13]][0] = 1.0;
+                        gameColors[topWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateX+13]][1] = 1.0;
+                        gameColors[topWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateX+13]][2] = 1.0;
+                        gameColors[topWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateX+13]][3] = 0.0;
                         
                         sphereColor=0;
                         color=10;
                     }else
-                        if(sphereTranslateX <= -4){
+                        if(sphereTranslateY <= -4){
                             score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                             
-                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][0] = 1.0;
-                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][1] = 1.0;
-                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][2] = 1.0;
-                            gameColors[bottomWallIndex[(int)sphereTranslateY][(int)sphereTranslateZ]][3] = 0.0;
+                            gameColors[bottomWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][0] = 1.0;
+                            gameColors[bottomWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][1] = 1.0;
+                            gameColors[bottomWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][2] = 1.0;
+                            gameColors[bottomWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][3] = 0.0;
                             
                             sphereColor=0;
                             color=10;
