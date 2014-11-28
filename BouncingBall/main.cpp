@@ -46,8 +46,8 @@ void displayWire(void){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     
-    for (int i = 0; i < 10 ; i++) {
-        for (int j=-5; j<5; j++) {
+    for (int i = -1; i < 10 ; i++) {
+        for (int j=-3; j<1; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
 //            if (i%2 == 0) {
