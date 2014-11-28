@@ -158,7 +158,7 @@ void displayWire(void){
     
     char * scoreString[50];
     sprintf((char *)scoreString,"SCORE = %f",score);
-   // print(-10,10,110,(char *)scoreString,0.2,0.6,0.97,0);
+    // print(-10,10,110,(char *)scoreString,0.2,0.6,0.97,0);
     print3d(-10, 10, (char *)scoreString);
     
     glMatrixMode(GL_MODELVIEW);
@@ -166,7 +166,7 @@ void displayWire(void){
     gluPerspective(60, 800 / 600, 0.001, 10000);
     gluLookAt(0, 0, zLookAt, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     
-
+    
     if (start == false) {
         glPushMatrix();
         glColor3f(0, 0, 0);
@@ -178,7 +178,7 @@ void displayWire(void){
         glutSolidCube(1);
         glPopMatrix();
     }
-
+    
     
     
     glPushMatrix();
@@ -201,7 +201,7 @@ void displayWire(void){
         }
         
     }
-
+    
     for (int i = 0; i < 40 ; i++) { //LEFT WALL ZY
         for (int j=-10; j<10; j++) {
             leftWall[i][j+10]=gameColors[startIndex][3];
@@ -216,7 +216,7 @@ void displayWire(void){
         }
         
     }
-
+    
     for (int i = 0; i < 40 ; i++) { //TOP WALL ZX
         for (int j=-10; j<10; j++) {
             topWall[i][j+10]=gameColors[startIndex][3];
@@ -231,7 +231,7 @@ void displayWire(void){
         }
         
     }
-
+    
     for (int i = 0; i < 40 ; i++) { //BOTTOM WALL ZX
         for (int j=-10; j<10; j++) {
             bottomWall[i][j+10]=gameColors[startIndex][3];
@@ -246,7 +246,7 @@ void displayWire(void){
         }
         
     }
-
+    
     for (int i = -10; i < 10 ; i++) { //FRONT WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
@@ -337,7 +337,7 @@ void animateIdle()
                     sphereTranslateX +=0.05;
                 else
                     sphereTranslateX +=0.005;
-                    
+                
                 if (sphereTranslateX >= 4) {
                     decrementX = 1;
                 }
@@ -357,7 +357,7 @@ void animateIdle()
                     sphereTranslateY +=0.05;
                 else
                     sphereTranslateY +=0.005;
-
+                
                 if (sphereTranslateY >= 4) {
                     decrementY = 1;
                 }
@@ -370,7 +370,7 @@ void animateIdle()
                 zLookAt -= 0.005;
                 sphereTranslateZ -=0.005;
             }
-
+            
         }
     }
     
@@ -433,31 +433,31 @@ void keyPressed (unsigned char key, int x, int y) {
                 gameColors[i][2] = savedGameColors[i][2];
                 gameColors[i][3] = savedGameColors[i][3];
             }
-             rightXOffset = 5;
-             zLookAt = 110;
-             startIndex = 0;
-             sphereTranslateX = 0;
-             sphereTranslateY = 0;
-             sphereTranslateZ = 97;
-             decrementX = 1;
-             decrementY = 1;
-             decrementZ = 1;
-             sphereColor=1;
-             score=0;
-             keyPress =0;
-             leftPress=0;
-             rightPress=0;
-             upPress=0;
-             downPress=0;
-             start=false;
-             color=0;
-             indexToBeRemoved = 0;
+            rightXOffset = 5;
+            zLookAt = 110;
+            startIndex = 0;
+            sphereTranslateX = 0;
+            sphereTranslateY = 0;
+            sphereTranslateZ = 97;
+            decrementX = 1;
+            decrementY = 1;
+            decrementZ = 1;
+            sphereColor=1;
+            score=0;
+            keyPress =0;
+            leftPress=0;
+            rightPress=0;
+            upPress=0;
+            downPress=0;
+            start=false;
+            color=0;
+            indexToBeRemoved = 0;
             
-             deltaSphereX=0;
-             deltaSphereY=0;
+            deltaSphereX=0;
+            deltaSphereY=0;
             
-             arrowRotationAngleZ = 0;
-             arrowRotationAngleX = -90;
+            arrowRotationAngleZ = 0;
+            arrowRotationAngleX = -90;
         }
         else if (key == 'r') {
             for (int i = 0; i < 4000; i++) {
@@ -466,8 +466,8 @@ void keyPressed (unsigned char key, int x, int y) {
                 gameColors[i][2] = savedGameColors[i][2];
                 gameColors[i][3] = savedGameColors[i][3];
             }
-    }
-    
+        }
+        
         
         
         sphereTranslateX = savedSphereTranslateX;
@@ -476,39 +476,39 @@ void keyPressed (unsigned char key, int x, int y) {
         zLookAt = savedZLookAt;
         
         replay = true;
-
+        
     }
     
 }
 void keySpecial (int key, int x, int y) {
     if (!start) {
-    if(key==GLUT_KEY_LEFT){
-        leftPress=10;
-        if (arrowRotationAngleX < -90) {
-            arrowRotationAngleZ -= 20;
-        }
-        else {
-        arrowRotationAngleZ += 20;
-        }
-    }
-    else
-        if (key==GLUT_KEY_RIGHT) {
-            rightPress=10;
+        if(key==GLUT_KEY_LEFT){
+            leftPress=10;
             if (arrowRotationAngleX < -90) {
-                arrowRotationAngleZ += 20;
-            }
-            else {
                 arrowRotationAngleZ -= 20;
             }
-        }else
-            if (key==GLUT_KEY_UP) {
-                upPress=10;
-                arrowRotationAngleX += 20;
-            }else
-                if (GLUT_KEY_DOWN) {
-                    downPress=10;
-                    arrowRotationAngleX -= 20;
+            else {
+                arrowRotationAngleZ += 20;
+            }
+        }
+        else
+            if (key==GLUT_KEY_RIGHT) {
+                rightPress=10;
+                if (arrowRotationAngleX < -90) {
+                    arrowRotationAngleZ += 20;
                 }
+                else {
+                    arrowRotationAngleZ -= 20;
+                }
+            }else
+                if (key==GLUT_KEY_UP) {
+                    upPress=10;
+                    arrowRotationAngleX += 20;
+                }else
+                    if (GLUT_KEY_DOWN) {
+                        downPress=10;
+                        arrowRotationAngleX -= 20;
+                    }
     }
 }
 
