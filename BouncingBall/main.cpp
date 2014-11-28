@@ -28,6 +28,8 @@ int leftPress=0;
 int rightPress=0;
 int upPress=0;
 int downPress=0;
+bool start=false;
+int color=0;
 
 void SetupLights()
 {
@@ -341,6 +343,7 @@ void animate(int x)
 
 void animateIdle()
 {
+    if (start) {
     if (zLookAt > 20) {
         //        if (sphereTranslateX > -10 && sphereTranslateX < 0) {
         //            sphereTranslateX -=0.005;
@@ -354,41 +357,32 @@ void animateIdle()
         //        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
         //            sphereTranslateY -=0.005;
         //        }
-        
-        
         if(sphereTranslateX >= 4){
             score+=rightWall[(int)sphereTranslateY][(int)sphereTranslateZ];
             sphereColor=0;
+            color=10;
         }else
             if(sphereTranslateX <= -4){
                 score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                 sphereColor=0;
+                color=10;
             }else
                 if(sphereTranslateY >= 4){
                     score+=topWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                     sphereColor=0;
+                    color=10;
                 }else
                     if(sphereTranslateX <= -4){
                         score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                         sphereColor=0;
-                    }else
+                        color=10;
+                    }else{
+                        if(color <0){
                         sphereColor=1;
-        if (rightPress>0) {
-            sphereTranslateX+=0.2;
-            rightPress--;
-        }
-        if (leftPress>0) {
-            sphereTranslateX-=0.2;
-            leftPress--;
-        }
-        if (upPress>0) {
-            sphereTranslateY+=0.2;
-            upPress--;
-        }
-        if (downPress>0) {
-            sphereTranslateY-=0.2;
-            downPress--;
-        }
+                            color--;
+                        }
+                        
+                    }
         
         if (decrementX == 1) {
             sphereTranslateX -=0.05;
@@ -413,23 +407,54 @@ void animateIdle()
                 decrementY = 1;
             }
         }
-        
         zLookAt -= 0.05;
         sphereTranslateZ -=0.05;
     }
-    
     startIndex = 0;
+    }
+    sphereColor=1;
+    double u;
+    srand( unsigned(time(NULL) ));
+    u=(double)rand()/(RAND_MAX+1)*(0.2-0.1)+0.1;
+    
+
+    if (rightPress>0) {
+        if (sphereTranslateX+0.1 <= 4) {
+        sphereTranslateX+=0.1;
+        rightPress--;
+        }
+    }
+    if (leftPress>0) {
+        if (sphereTranslateX-0.1 >= -4) {
+            sphereTranslateX-=0.1;
+            leftPress--;
+        }
+    }
+    if (upPress>0) {
+        if (sphereTranslateY+0.1 <= 4) {
+            sphereTranslateY+=0.1;
+            upPress--;
+        }
+    }
+    if (downPress>0) {
+        if (sphereTranslateY-0.1 >= -4) {
+            sphereTranslateY-=0.1;
+            downPress--;
+        }
+    }
     glutPostRedisplay();
     
 }
 void keyPressed (unsigned char key, int x, int y) {
-    if (key=='a') {
-        keyPress=10;
+    if (key==' '){  // If the 'spacebar' key has been pressed
+        start = !start;
     }
+
 }
 void keySpecial (int key, int x, int y) {
-    if(key==GLUT_KEY_LEFT)
+    if(key==GLUT_KEY_LEFT){
         leftPress=10;
+    }
     else
         if (key==GLUT_KEY_RIGHT) {
             rightPress=10;
@@ -523,7 +548,7 @@ int main(int argc, char** argv)
     glutIdleFunc(animateIdle);
     //   glutTimerFunc(0.001, animate, 1);
     glClearColor(1.0,1.0,1.0,0.0);
-//    glutKeyboardFunc(keyPressed); // Tell GLUT to use the method "keyPressed" for key presses
+    glutKeyboardFunc(keyPressed); // Tell GLUT to use the method "keyPressed" for key presses
     glutSpecialFunc(keySpecial);
     glutMainLoop();
     return 0;
