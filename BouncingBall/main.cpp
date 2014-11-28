@@ -13,7 +13,7 @@ double gameColors[4000][4];
 int startIndex = 0;
 double sphereTranslateX = 0;
 double sphereTranslateY = 0;
-double sphereTranslateZ = 70;
+double sphereTranslateZ = 100;
 
 
 void SetupLights()
@@ -63,7 +63,6 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
-            glFlush();
             glTranslated(10.0, j, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -77,7 +76,6 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
-            glFlush();
             glTranslated(-10.0, j, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -91,7 +89,6 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
-            glFlush();
             glTranslated(j, 10, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -105,7 +102,6 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
-            glFlush();
             glTranslated(j, -10, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -119,7 +115,6 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
-            glFlush();
             glTranslated(j, i , 0);
             glutSolidCube(1);
             glPopMatrix();
@@ -329,10 +324,20 @@ void animate(int x)
 
 void animateIdle()
 {
-    if (zLookAt > 5) {
+    if (zLookAt > 20) {
+        if (sphereTranslateX > -10 && sphereTranslateX < 0) {
+            sphereTranslateX -=0.005;
+        }
+        else if (sphereTranslateX < 10 && sphereTranslateX > 0) {
+            sphereTranslateX +=0.005;
+        }
+        if (sphereTranslateY > 0 && sphereTranslateY < 10) {
+            sphereTranslateY +=0.005;
+        }
+        else if (sphereTranslateY < 0 && sphereTranslateY > -10) {
+            sphereTranslateY -=0.005;
+        }
         zLookAt -= 0.05;
-        sphereTranslateX -=0.0005;
-        sphereTranslateY -=0.0;
         sphereTranslateZ -=0.05;
     }
     
