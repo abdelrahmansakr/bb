@@ -13,7 +13,7 @@ double gameColors[4000][4];
 int startIndex = 0;
 double sphereTranslateX = 2;
 double sphereTranslateY = 1;
-double sphereTranslateZ = 98;
+double sphereTranslateZ = 40;
 int decrementX = 1;
 int decrementY = 1;
 int decrementZ = 1;
@@ -155,7 +155,7 @@ void displayWire(void){
     glutSolidSphere(0.15, 50, 50);
     glPopMatrix();
     
-    for (int i = 0; i < 40 ; i++) { //RIGHT WALL
+    for (int i = 0; i < 40 ; i++) { //RIGHT WALL ZY
         for (int j=-10; j<10; j++) {
             rightWall[i][j+10]=gameColors[startIndex][3];
             rightWallIndex[i][j+10] = startIndex;
@@ -169,10 +169,8 @@ void displayWire(void){
         }
         
     }
-    std::cout << "after right wall ";
-    std::cout<< startIndex;
-    std::cout << "\n";
-    for (int i = 0; i < 40 ; i++) { //LEFT WALL
+
+    for (int i = 0; i < 40 ; i++) { //LEFT WALL ZY
         for (int j=-10; j<10; j++) {
             leftWall[i][j+10]=gameColors[startIndex][3];
             leftWallIndex[i][j+10] = startIndex;
@@ -186,10 +184,8 @@ void displayWire(void){
         }
         
     }
-    std::cout << "after left wall ";
-    std::cout<< startIndex;
-    std::cout << "\n";
-    for (int i = 0; i < 40 ; i++) { //TOP WALL
+
+    for (int i = 0; i < 40 ; i++) { //TOP WALL ZX
         for (int j=-10; j<10; j++) {
             topWall[i][j+10]=gameColors[startIndex][3];
             topWallIndex[i][j+10] = startIndex;
@@ -203,10 +199,8 @@ void displayWire(void){
         }
         
     }
-    std::cout << "after top wall ";
-    std::cout<< startIndex;
-    std::cout << "\n";
-    for (int i = 0; i < 40 ; i++) { //BOTTOM WALL
+
+    for (int i = 0; i < 40 ; i++) { //BOTTOM WALL ZX
         for (int j=-10; j<10; j++) {
             bottomWall[i][j+10]=gameColors[startIndex][3];
             bottomWallIndex[i][j+10] = startIndex;
@@ -220,9 +214,7 @@ void displayWire(void){
         }
         
     }
-    std::cout << "after bottom wall ";
-    std::cout<< startIndex;
-    std::cout << "\n";
+
     for (int i = -20; i < 20 ; i++) { //FRONT WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
@@ -235,9 +227,6 @@ void displayWire(void){
         }
         
     }
-    std::cout << "after front wall ";
-    std::cout<< startIndex;
-    std::cout << "\n";
     glutSwapBuffers();
     //glFlush();
 }
