@@ -56,6 +56,13 @@ bool replay = false;
 
 int totalScore = 0;
 
+double upX = 0;
+double upY = 1;
+double upZ = 0;
+bool enhancedCamera = true;
+
+int r = 0;
+
 void SetupLights()
 {
     GLfloat mat_ambient[] = { 0.7f, 0.7f, 0.7, 1.0f };
@@ -164,7 +171,7 @@ void displayWire(void){
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     gluPerspective(60, 800 / 600, 0.001, 10000);
-    gluLookAt(0, 0, zLookAt, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
+    gluLookAt(0, 0, zLookAt, 0, 0, 0, upX, upY, upZ); //start drawing
     
     
     if (start == false) {
@@ -273,9 +280,54 @@ void animate(int x)
 void animateIdle()
 {
     if (start) {
+  
         if (zLookAt > 20) {
+            
+            if (!enhancedCamera) {
+                upX = 0.0;
+                upY = 1.0;
+                upZ = 0.0;
+                
+            }
+            else {
+                if (r == 0) {
+                    upX = 0;
+                    upY = 1;
+                    upZ = 0;
+                    r++;
+                }
+                else if (r == 1) {
+                    upX = -1;
+                    upY = 1;
+                    upZ = 0;
+                    r++;
+                }
+                else if (r == 2) {
+                    upX = -1;
+                    upY = 0;
+                    upZ = 0;
+                    r++;
+                }
+                else if (r == 3) {
+                    upX = -1;
+                    upY = -1;
+                    upZ = 0;
+                    r++;
+                }
+                else if ( r == 4) {
+                    upX = 0;
+                    upY = -1;
+                    upZ = 0;
+                    r = 0;
+                }
+                
+                
+            }
+            
             if(sphereTranslateX >= 4){
-                score+=rightWall[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY];
+                if (!replay)
+                    score+=rightWall[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY];
+                
                 gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][0] = 1.0;
                 gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][1] = 1.0;
                 gameColors[rightWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+12]][2] = 1.0;
@@ -284,7 +336,8 @@ void animateIdle()
                 color=10;
             }else
                 if(sphereTranslateX <= -4){
-                    score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                    if (!replay)
+                        score+=leftWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                     
                     gameColors[leftWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][0] = 1.0;
                     gameColors[leftWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][1] = 1.0;
@@ -295,7 +348,8 @@ void animateIdle()
                     color=10;
                 }else
                     if(sphereTranslateY >= 4){
-                        score+=topWall[(int)sphereTranslateZ][(int)sphereTranslateY];
+                        if (!replay)
+                            score+=topWall[(int)sphereTranslateZ][(int)sphereTranslateY];
                         
                         gameColors[topWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateX+13]][0] = 1.0;
                         gameColors[topWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateX+13]][1] = 1.0;
@@ -306,7 +360,8 @@ void animateIdle()
                         color=10;
                     }else
                         if(sphereTranslateY <= -4){
-                            score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
+                            if (!replay)
+                                score+=bottomWall[(int)sphereTranslateY][(int)sphereTranslateZ];
                             
                             gameColors[bottomWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][0] = 1.0;
                             gameColors[bottomWallIndex[(int)(sphereTranslateZ/2.425)][(int)sphereTranslateY+8]][1] = 1.0;
