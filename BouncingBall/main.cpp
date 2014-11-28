@@ -29,6 +29,7 @@ double upX = 0;
 double upY = 1;
 double upZ = 0;
 int r=0;
+bool printed =false;
 bool enhancedCamera=true;
 
 int decrementX = 1;
@@ -451,6 +452,8 @@ void animateIdle()
             
         }
         else {
+            totalScore+=score;
+            if (!printed) {
             std::cout << "The score of this round is: ";
             std::cout << score;
             std::cout << "\n";
@@ -476,6 +479,8 @@ void animateIdle()
             std::cout << "\n";
             std::cout << "Right steps: ";
             std::cout << right;
+            printed=true;
+            }
         }
     }
     
@@ -533,7 +538,6 @@ void keyPressed (unsigned char key, int x, int y) {
     }else{
         if (key == 'n') {
             scores[game]=score;
-            totalScore+=score;
             game++;
             replay =false;
             for (int i = 0; i < 4000; i++) {
@@ -542,6 +546,7 @@ void keyPressed (unsigned char key, int x, int y) {
                 gameColors[i][2] = savedGameColors[i][2];
                 gameColors[i][3] = savedGameColors[i][3];
             }
+            printed=false;
             left=0;
             right=0;
             up=0;
