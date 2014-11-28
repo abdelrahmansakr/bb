@@ -11,8 +11,8 @@ double colorsArray[7][4];
 double zLookAt = 110;
 double gameColors[4000][4];
 int startIndex = 0;
-double sphereTranslateX = 2;
-double sphereTranslateY = 1;
+double sphereTranslateX = 0;
+double sphereTranslateY = 0;
 double sphereTranslateZ = 97;
 int decrementX = 1;
 int decrementY = 1;
@@ -37,6 +37,9 @@ int downPress=0;
 bool start=false;
 int color=0;
 int indexToBeRemoved = 0;
+
+double deltaSphereX=0;
+double deltaSphereY=0;
 
 void SetupLights()
 {
@@ -291,24 +294,24 @@ void animateIdle()
                             
                         }
             
-            if (decrementX == 1) {
+            if (decrementX == 1 && sphereTranslateX!=0) {
                 sphereTranslateX -=0.05;
                 if (sphereTranslateX <= -4) {
                     decrementX = 0;
                 }
-            } else if (decrementX == 0) {
+            } else if (decrementX == 0 && sphereTranslateX!=0) {
                 sphereTranslateX +=0.05;
                 if (sphereTranslateX >= 4) {
                     decrementX = 1;
                 }
             }
             
-            if (decrementY == 1) {
+            if (decrementY == 1 &&  sphereTranslateY!=0) {
                 sphereTranslateY -=0.05;
                 if (sphereTranslateY <= -4) {
                     decrementY = 0;
                 }
-            } else if (decrementY == 0) {
+            } else if (decrementY == 0&&sphereTranslateY!=0) {
                 sphereTranslateY +=0.05;
                 if (sphereTranslateY >= 4) {
                     decrementY = 1;
@@ -318,6 +321,7 @@ void animateIdle()
             sphereTranslateZ -=0.05;
         }
     }
+    
     sphereColor=1;
     double u;
     srand( unsigned(time(NULL) ));
@@ -329,24 +333,28 @@ void animateIdle()
             sphereTranslateX+=0.05;
             rightPress--;
         }
+        decrementX=0;
     }
     if (leftPress>0) {
         if (sphereTranslateX-0.05 >= -4) {
             sphereTranslateX-=0.05;
             leftPress--;
         }
+        decrementX=1;
     }
     if (upPress>0) {
         if (sphereTranslateY+0.05 <= 4) {
             sphereTranslateY+=0.05;
             upPress--;
         }
+        decrementY=0;
     }
     if (downPress>0) {
         if (sphereTranslateY-0.05 >= -4) {
             sphereTranslateY-=0.05;
             downPress--;
         }
+        decrementY=1;
     }
     startIndex = 0;
     glutPostRedisplay();
