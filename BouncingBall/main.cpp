@@ -54,8 +54,13 @@ void displayWire(void){
     gluPerspective(60, 800 / 600, 0.001, 10000);
     gluLookAt(0, 0, zLookAt, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     
+    glPushMatrix();
+    glColor3f(1, 1, 1);
+    glTranslated(sphereTranslateX, sphereTranslateY, sphereTranslateZ);
+    glutSolidSphere(0.15, 50, 50);
+    glPopMatrix();
     
-    for (int i = 0; i < 40 ; i++) {
+    for (int i = 0; i < 40 ; i++) { //RIGHT WALL
         for (int j=-10; j<10; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
@@ -338,24 +343,24 @@ void animateIdle()
         
         if (decrementX == 1) {
             sphereTranslateX -=0.05;
-            if (sphereTranslateX <= -10) {
+            if (sphereTranslateX <= -4) {
                 decrementX = 0;
             }
         } else if (decrementX == 0) {
             sphereTranslateX +=0.05;
-            if (sphereTranslateX >= 10) {
+            if (sphereTranslateX >= 4) {
                 decrementX = 1;
             }
         }
         
         if (decrementY == 1) {
             sphereTranslateY -=0.05;
-            if (sphereTranslateY <= -10) {
+            if (sphereTranslateY <= -4) {
                 decrementY = 0;
             }
         } else if (decrementY == 0) {
             sphereTranslateY +=0.05;
-            if (sphereTranslateY >= 10) {
+            if (sphereTranslateY >= 4) {
                 decrementY = 1;
             }
         }
@@ -452,19 +457,5 @@ int main(int argc, char** argv)
     glutMainLoop();
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
