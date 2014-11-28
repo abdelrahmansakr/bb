@@ -63,6 +63,7 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
+            glFlush();
             glTranslated(10.0, j, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -76,6 +77,7 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
+            glFlush();
             glTranslated(-10.0, j, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -89,6 +91,7 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
+            glFlush();
             glTranslated(j, 10, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -102,6 +105,7 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
+            glFlush();
             glTranslated(j, -10, i);
             glutSolidCube(1);
             glPopMatrix();
@@ -115,6 +119,7 @@ void displayWire(void){
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
             startIndex++;
+            glFlush();
             glTranslated(j, i , 0);
             glutSolidCube(1);
             glPopMatrix();
@@ -324,7 +329,7 @@ void animate(int x)
 
 void animateIdle()
 {
-    if (zLookAt > 0.05) {
+    if (zLookAt > 5) {
         zLookAt -= 0.05;
         sphereTranslateX -=0.0005;
         sphereTranslateY -=0.0;
