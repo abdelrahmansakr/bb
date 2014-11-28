@@ -42,7 +42,7 @@ double deltaSphereX=0;
 double deltaSphereY=0;
 
 double arrowRotationAngleZ = 0;
-double arrowRotationAngleX = 0;
+double arrowRotationAngleX = -90;
 
 void SetupLights()
 {
@@ -395,11 +395,11 @@ void keySpecial (int key, int x, int y) {
         }else
             if (key==GLUT_KEY_UP) {
                 upPress=10;
-                arrowRotationAngleX -= 20;
+                arrowRotationAngleX += 20;
             }else
                 if (GLUT_KEY_DOWN) {
                     downPress=10;
-                    arrowRotationAngleX += 20;
+                    arrowRotationAngleX -= 20;
                 }
 }
 
