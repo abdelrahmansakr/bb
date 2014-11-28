@@ -52,8 +52,8 @@ void displayWire(void){
     gluLookAt(0, 0, zLookAt, 0, 0, 0, 0.0, 1.0, 0.0); //start drawing
     
     
-    for (int i = -1; i < 10 ; i++) {
-        for (int j=-3; j<1; j++) {
+    for (int i = 0; i < 40 ; i++) {
+        for (int j=-10; j<10; j++) {
             glPushMatrix();
             glScaled(1, 1, 2);
             glColor3f(gameColors[startIndex][0], gameColors[startIndex][1], gameColors[startIndex][2]);
